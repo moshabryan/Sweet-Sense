@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetSense - Dessert Digital Book</title>
+    
+    <meta name="theme-color" content="#8D4159">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --berry: #8D4159;
+            --cloud: #F0F1F5;
+            --sage: #798962;
+            --white: #ffffff;
+            --text-dark: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cloud);
+            color: var(--text-dark);
+            margin: 0;
+            padding-bottom: 100px;
+            user-select: none; /* Mencegah seleksi teks agar terasa seperti aplikasi native */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Splash Screen */
+        #splash-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .splash-logo-container {
+            width: 140px; height: 140px;
+            background: var(--berry);
+            border-radius: 35px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 15px 35px rgba(141, 65, 89, 0.3);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .splash-logo-container img { width: 100%; height: 100%; border-radius: 35px; object-fit: cover; }
+
+        /* Bottom Nav - DILEBARKAN */
+        .bottom-nav {
+            position: fixed;
+            bottom: 15px; left: 50%;
+            transform: translateX(-50%);
+            width: 96%; /* Diperlebar dari 90% */
+            max-width: 600px; /* Max width ditambah agar di tablet/desktop lebih lebar */
+            background: var(--berry);
+            border-radius: 25px;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            z-index: 2000;
+        }
+        .nav-item {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.75rem;
+            transition: 0.3s;
+            cursor: pointer;
+            flex-grow: 1; /* Agar area klik menyebar rata */
+        }
+        .nav-item.active { color: var(--white); font-weight: 600; }
+        .nav-item i { font-size: 1.5rem; display: block; margin-bottom: 2px; }
+
+        /* UI Elements */
+        .cat-card {
+            border: none; border-radius: 25px; padding: 20px 15px;
+            background: var(--white); transition: 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            cursor: pointer;
+            /* Carousel specific styles */
+            min-width: 110px; /* Lebar fixed untuk item carousel */
+            margin-right: 15px;
+        }
+        .cat-card:active { transform: scale(0.95); }
+        .cat-icon-circle {
+            width: 50px; height: 50px; border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin-bottom: 10px;
+        }
+
+        /* Carousel Container Style */
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 5px 25px 5px; /* Padding bawah untuk shadow */
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none; /* Hide scrollbar Chrome/Safari */
+        }
+
+        /* Search Bar Style */
+        .search-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            border-radius: 20px;
+            border: none;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            outline: none;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--berry);
+            font-size: 1.2rem;
+        }
+
+        /* Recipe List Card (Horizontal Style) */
+        .recipe-card {
+            background: var(--white); 
+            border-radius: 20px; 
+            overflow: hidden;
+            border: none; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+            margin-bottom: 15px;
+            padding: 12px;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .recipe-card:active { transform: scale(0.98); background-color: #f8f9fa; }
+        
+        .thumb-img {
+            width: 80px; 
+            height: 80px; 
+            flex-shrink: 0; 
+            border-radius: 15px; 
+            object-fit: cover;
+            background: #eee;
+        }
+
+        .badge-sage { background-color: var(--sage); color: white; border-radius: 8px; padding: 4px 10px; font-size: 0.7rem; font-weight: 500; }
+
+        /* Detail Page */
+        .detail-header {
+            background: var(--berry); color: white; padding: 60px 20px 50px;
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
+        }
+        .ingredient-box {
+            background: var(--white); border-radius: 20px; padding: 25px;
+            border-left: 8px solid var(--sage); margin-top: -30px;
+        }
+        .step-circle {
+            width: 32px; height: 32px; background: var(--berry); color: white;
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 0.9rem; margin-right: 15px; flex-shrink: 0;
+        }
+
+        /* Views Animation */
+        .view { display: none; padding-bottom: 30px; }
+        .view.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-logo-container" onclick="enterApp()">
+            <img src="assets/LOGO2.jpg" alt="SS" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:white;font-weight:bold;font-size:2.5rem\'>SS</span>'">
+        </div>
+        <h2 class="mt-4 fw-bold" style="color: var(--berry)">SweetSense</h2>
+    </div>
+
+    <div id="main-view">
+        <!-- Home View -->
+        <section id="view-home" class="view container pt-5">
+            <h3 class="fw-bold mb-1" style="color: var(--berry)">Halo, Foodies!</h3>
+            <p class="text-muted mb-4 small">Mau bikin dessert apa hari ini?</p>
+            
+            <!-- Horizontal Carousel Kategori -->
+            <div class="carousel-container">
+                <div class="cat-card" onclick="renderList('Manis')">
+                    <div class="cat-icon-circle" style="background: #FFE5EC; color: #FF4D6D;">🍰</div>
+                    <span class="fw-bold small">Manis</span>
+                </div>
+                <div class="cat-card" onclick="renderList('Asin')">
+                    <div class="cat-icon-circle" style="background: #E0F2FE; color: #0EA5E9;">🧂</div>
+                    <span class="fw-bold small">Asin</span>
+                </div>
+                <div class="cat-card" onclick="renderList('Gurih')">
+                    <div class="cat-icon-circle" style="background: #FEF3C7; color: #D97706;">🥥</div>
+                    <span class="fw-bold small">Gurih</span>
+                </div>
+                <div class="cat-card" onclick="renderList('Pahit')">
+                    <div class="cat-icon-circle" style="background: #F3E8FF; color: #7E22CE;">☕</div>
+                    <span class="fw-bold small">Pahit</span>
+                </div>
+                <div class="cat-card" onclick="renderList('Asam')">
+                    <div class="cat-icon-circle" style="background: #ECFDF5; color: #059669;">🍋</div>
+                    <span class="fw-bold small">Asam</span>
+                </div>
+            </div>
+
+            <!-- Recommended Recipes Section -->
+            <div class="mt-2">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="fw-bold mb-0" style="color: var(--text-dark)">Rekomendasi Chef 👨‍🍳</h5>
+                </div>
+                <div id="recommended-container">
+                    <!-- Random recipes will be injected here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- List View -->
+        <section id="view-list" class="view container pt-5">
+            <div class="d-flex align-items-center mb-4">
+                <button class="btn p-0 me-3" onclick="showPage('view-home')"><i class="bi bi-arrow-left fs-2" style="color: var(--berry)"></i></button>
+                <h4 class="fw-bold mb-0" id="cat-title">Resep</h4>
+            </div>
+
+            <div class="search-wrapper">
+                <i class="bi bi-search search-icon"></i>
+                <input type="text" class="search-input" id="search-input" placeholder="Cari resep disini..." onkeyup="filterRecipes()">
+            </div>
+
+            <div id="list-container"></div>
+        </section>
+
+        <!-- Detail View -->
+        <section id="view-detail" class="view"></section>
+
+        <!-- Favorites View -->
+        <section id="view-fav" class="view container pt-5">
+            <h4 class="fw-bold mb-4" style="color: var(--berry)">Koleksi Favorit ❤</h4>
+            <div id="fav-container"></div>
+        </section>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" id="btn-home" onclick="showPage('view-home')">
+            <i class="bi bi-house-heart"></i>Home
+        </div>
+        <div class="nav-item" id="btn-fav" onclick="showPage('view-fav')">
+            <i class="bi bi-bookmark-heart"></i>Favorit
+        </div>
+    </nav>
+
+    <script>
+        // --- DATABASE RESEP LENGKAP (50 Item) ---
+        // Nama resep disesuaikan dengan request (Long Title)
+        const db = {
+            'Pahit': [
+                { id: 1, name: "Dark Chocolate Bitter Mousse", time: "50 Menit", ingredients: ["200g Dark Chocolate (85% Kakao)", "4 Telur Ayam (Pisahkan)", "1 sdm Espresso Powder", "30g Unsalted Butter", "1 sdt Ekstrak Vanilla"], steps: ["Lelehkan dark chocolate dan butter dengan teknik double boiler (tim).", "Kocok kuning telur dan espresso hingga pucat, lalu campurkan ke cokelat leleh.", "Di wadah terpisah, kocok putih telur hingga kaku (stiff peaks).", "Lipat putih telur ke adonan cokelat secara bertahap menggunakan spatula.", "Tuang ke gelas saji, dinginkan di kulkas minimal 6 jam."], image_url: "assets/PAHIT-1.jpg" },
+                { id: 2, name: "Tiramisu Kopi Pahit", time: "45 Menit", ingredients: ["200g Biskuit Ladyfingers", "250ml Espresso Dingin", "250g Keju Mascarpone", "300ml Heavy Cream", "Bubuk Kakao (untuk taburan)"], steps: ["Kocok mascarpone dan heavy cream hingga lembut dan mengembang.", "Celupkan ladyfingers ke dalam espresso sebentar (jangan sampai lembek).", "Tata di dasar wadah, lapisi dengan krim mascarpone.", "Ulangi lapisan hingga wadah penuh.", "Simpan di kulkas semalaman, taburi bubuk kakao sebelum disajikan."], image_url: "assets/PAHIT-2.jpg" },
+                { id: 3, name: "Dark Matcha Pudding", time: "35 Menit", ingredients: ["2 sdm Bubuk Matcha Premium", "500ml Susu Almond/Soy", "1 Bungkus Agar-agar Plain", "50g Gula Pasir (opsional)"], steps: ["Larutkan bubuk matcha dengan sedikit air hangat agar tidak menggumpal.", "Campurkan susu, agar-agar, dan gula di panci. Masak dengan api sedang.", "Masukkan larutan matcha, aduk terus hingga mendidih.", "Tuang ke cetakan sambil disaring.", "Dinginkan hingga set."], image_url: "assets/PAHIT-3.jpg" },
+                { id: 4, name: "Bitter Orange Peel Choco Bark", time: "70 Menit", ingredients: ["200g Dark Chocolate 70%", "Kulit dari 2 buah Jeruk (Sunkist)", "Sejumput Sea Salt", "100ml Heavy Cream"], steps: ["Rebus kulit jeruk 2-3 kali untuk mengurangi rasa pahit, lalu potong kecil memanjang.", "Panaskan heavy cream, tuang ke potongan cokelat, aduk hingga menjadi ganache.", "Tuang ke loyang yang dialasi kertas roti, ratakan.", "Taburi kulit jeruk dan sea salt di atasnya.", "Bekukan hingga keras lalu potong-potong."], image_url: "assets/PAHIT-4.jpg" },
+                { id: 5, name: "Espresso Bitter Jelly", time: "30 Menit", ingredients: ["600ml Kopi Hitam Pekat", "1 Bungkus Jelly Powder (Nutrijell)", "30g Gula Aren (sedikit saja)"], steps: ["Campurkan bubuk jelly dan gula ke dalam panci.", "Tuang kopi hitam yang sudah diseduh, aduk rata.", "Masak hingga mendidih sambil terus diaduk.", "Tuang ke gelas-gelas kecil.", "Sajikan dingin dengan sedikit susu cair tawar jika suka."], image_url: "assets/PAHIT-5.jpg" },
+                { id: 6, name: "Choco-Charcoal Ice Cream (Bitter)", time: "7 Jam", ingredients: ["400ml Whipping Cream Cair", "150ml Susu Kental Manis", "2 sdm Bubuk Arang Aktif (Food Grade)"], steps: ["Kocok whipping cream hingga kaku (soft peak).", "Masukkan susu kental manis dan bubuk arang, mixer dengan kecepatan rendah hingga rata.", "Tuang ke wadah tertutup.", "Simpan di freezer minimal 6-7 jam.", "Siap disendok (scoop)."], image_url: "assets/PAHIT-6.jpg" },
+                { id: 7, name: "Dark Burnt Caramel Flan", time: "60 Menit", ingredients: ["100g Gula Pasir (untuk karamel)", "3 Telur Ayam", "250ml Susu Full Cream", "1 sdt Vanilla"], steps: ["Panaskan gula di teflon hingga meleleh dan berwarna cokelat tua (sedikit gosong untuk rasa pahit khas). Tuang ke dasar cetakan.", "Kocok telur, susu, dan vanilla hingga rata, lalu saring.", "Tuang adonan susu ke atas karamel yang sudah mengeras.", "Kukus dengan api kecil selama 30 menit.", "Dinginkan lalu balikkan ke piring saji."], image_url: "assets/PAHIT-7.jpg" },
+                { id: 8, name: "Bitter Matcha Brownies", time: "50 Menit", ingredients: ["150g White Chocolate", "2 sdm Matcha Powder", "100g Butter", "2 Telur", "100g Tepung Terigu"], steps: ["Lelehkan white chocolate dan butter.", "Kocok telur dan gula (opsional) hingga mengembang.", "Masukkan lelehan cokelat, lalu ayak tepung dan matcha ke dalamnya. Aduk lipat.", "Tuang ke loyang yang sudah dioles mentega.", "Panggang 170°C selama 25-30 menit."], image_url: "assets/PAHIT-8.jpg" },
+                { id: 9, name: "Dark Herbal Bitter Cookies", time: "40 Menit", ingredients: ["200g Tepung Terigu", "100g Butter", "1 sdm Kopi Bubuk Instan (untuk rasa pahit)", "1 Butir Kuning Telur", "Choco Chips secukupnya"], steps: ["Kocok butter dan gula halus (sedikit) hingga lembut.", "Masukkan kuning telur dan kopi bubuk, aduk rata.", "Masukkan tepung terigu, uleni hingga bisa dibentuk.", "Bentuk bulat-bulat, pipihkan, beri choco chip.", "Panggang 160°C hingga matang (sekitar 20 menit)."], image_url: "assets/PAHIT-9.jpg" },
+                { id: 10, name: "Grapefruit Bitter Sorbet", time: "5 Jam", ingredients: ["2 buah Grapefruit (Jeruk Bali Merah)", "1 buah Lemon (peras)", "3 sdm Madu", "100ml Air"], steps: ["Kupas grapefruit, ambil daging buahnya saja.", "Blender daging buah bersama air lemon, madu, dan air hingga halus.", "Tuang ke wadah, simpan di freezer.", "Setiap 1 jam, keluarkan dan aduk/kerok dengan garpu agar teksturnya menjadi sorbet (lakukan 3-4 kali).", "Sajikan beku."], image_url: "assets/PAHIT-10.jpg" }
+            ],
+            'Asam': [
+                { id: 11, name: "Lemon Mousse Lembut", time: "40 Menit", ingredients: ["200ml Whip Cream", "150g Cream Cheese", "Air perasan 2 buah Lemon", "Parutan kulit Lemon"], steps: ["Kocok cream cheese hingga lembut.", "Masukkan air lemon dan parutan kulit, aduk rata.", "Di wadah lain, kocok whip cream hingga kaku.", "Campurkan keduanya dengan teknik aduk balik.", "Tuang ke gelas, dinginkan 2 jam."], image_url: "assets/ASEM1.jpg" },
+                { id: 12, name: "Puding Yogurt Stroberi", time: "30 Menit", ingredients: ["500ml Yogurt Plain", "10 buah Stroberi segar", "1 bungkus Agar-agar merah", "400ml Air"], steps: ["Masak agar-agar dengan air hingga mendidih.", "Matikan api, biarkan uap panas hilang.", "Masukkan yogurt plain, aduk cepat hingga rata.", "Tuang ke cetakan, beri potongan stroberi di dalamnya.", "Dinginkan hingga set."], image_url: "assets/ASEM2.jpg" },
+                { id: 13, name: "Tart Lemon Mini", time: "60 Menit", ingredients: ["Kulit Pie (siap pakai)", "3 Kuning Telur", "100ml Jus Lemon", "70g Butter", "Gula secukupnya"], steps: ["Campur kuning telur, jus lemon, dan gula di panci.", "Masak dengan api sangat kecil sambil terus diaduk hingga mengental.", "Matikan api, masukkan butter, aduk hingga leleh dan mengkilap.", "Tuang ke dalam kulit pie yang sudah dipanggang.", "Dinginkan di kulkas."], image_url: "assets/ASEM3.jpg" },
+                { id: 14, name: "Es Leci Asam Pedas Manis", time: "15 Menit", ingredients: ["1 kaleng Leci", "3 buah Jeruk Nipis", "Air Soda tawar", "Daun Mint"], steps: ["Masukkan buah leci dan sedikit airnya ke gelas.", "Peras 2 jeruk nipis, iris tipis 1 jeruk sisanya.", "Tuang air soda hingga penuh.", "Beri es batu dan hiasan daun mint. Aduk rata."], image_url: "assets/ASEM4.jpg" },
+                { id: 15, name: "Sorbet Mangga Asam", time: "4 Jam", ingredients: ["2 buah Mangga Muda/Mengkal", "1 buah Lemon", "Air Gula (Simple Syrup)"], steps: ["Kupas dan potong mangga.", "Blender mangga bersama perasan lemon dan air gula hingga sangat halus.", "Saring jika perlu.", "Bekukan di freezer semalaman.", "Blender kembali sorbet beku agar teksturnya lembut sebelum disajikan."], image_url: "assets/ASEM5.jpg" },
+                { id: 16, name: "Pann Cotta Yogurt Lemon", time: "35 Menit", ingredients: ["250ml Heavy Cream", "250ml Yogurt Kental", "1 sdm Gelatin Bubuk", "Vanilla"], steps: ["Campur gelatin dengan sedikit air dingin, biarkan mekar (bloom).", "Panaskan heavy cream (jangan sampai mendidih), masukkan gelatin dan vanilla, aduk hingga larut.", "Angkat, biarkan hangat kuku, lalu campurkan yogurt.", "Tuang ke cetakan, simpan di kulkas."], image_url: "assets/ASEM6.jpg" },
+                { id: 17, name: "Pie Kiwi Asam-Manis", time: "50 Menit", ingredients: ["Kulit Pie matang", "Vla/Custard instan", "3 buah Kiwi Hijau"], steps: ["Buat vla/custard sesuai instruksi kemasan, dinginkan.", "Isi kulit pie dengan custard hingga penuh.", "Iris tipis buah kiwi.", "Susun irisan kiwi di atas custard hingga menutupi permukaan.", "Olesi dengan sedikit agar-agar bening agar mengkilap."], image_url: "assets/ASEM7.jpg" },
+                { id: 18, name: "Jelly Markisa Mint", time: "25 Menit", ingredients: ["5 buah Markisa", "1 bungkus Jelly Plain", "500ml Air", "Gula secukupnya"], steps: ["Kerok isi markisa.", "Masak jelly powder, air, dan gula hingga mendidih.", "Matikan api, masukkan biji dan sari markisa.", "Aduk rata, tuang ke cetakan.", "Sajikan dingin."], image_url: "assets/ASEM8.jpg" },
+                { id: 19, name: "Cheesecake Lemon Tanpa Oven", time: "5 Jam", ingredients: ["250g Cream Cheese", "100ml Air Lemon", "100g Biskuit Marie (hancurkan)", "50g Mentega Leleh"], steps: ["Campur remahan biskuit dengan mentega leleh, padatkan di dasar loyang.", "Kocok cream cheese hingga lembut, masukkan air lemon.", "Tuang adonan keju ke atas lapisan biskuit.", "Simpan di kulkas minimal 5 jam hingga set (tanpa oven)."], image_url: "assets/ASEM9.jpg" },
+                { id: 20, name: "Puding Jeli Lemon dan Jeruk", time: "35 Menit", ingredients: ["4 buah Jeruk Peras", "1 bungkus Nutrijell Jeruk", "Gula Pasir"], steps: ["Peras jeruk, ambil airnya sekitar 400ml.", "Campur air jeruk, bubuk jelly, dan gula di panci.", "Masak hingga mendidih.", "Tuang kembali ke dalam kulit jeruk yang sudah dikerok (sebagai mangkuk) atau cetakan biasa.", "Dinginkan."], image_url: "assets/ASEM10.jpg" }
+            ],
+            'Asin': [
+                { id: 21, name: "Salted Caramel Bliss", time: "45 Menit", ingredients: ["200g Gula Pasir", "100g Salted Butter", "150ml Heavy Cream", "1 sdt Garam Laut (Sea Salt)"], steps: ["Panaskan gula di panci tebal hingga meleleh menjadi karamel (warna amber).", "Matikan api, masukkan butter hati-hati sambil diaduk cepat.", "Tuang heavy cream perlahan sambil terus diaduk hingga rata.", "Masukkan garam laut. Masak sebentar lagi dengan api kecil hingga mengental.", "Sajikan sebagai saus dessert."], image_url: "assets/ASIN-1.jpg" },
+                { id: 22, name: "Cheese Melt Delight", time: "20 Menit", ingredients: ["2 lembar Roti Tawar Tebal", "Keju Mozzarella", "Keju Cheddar", "Mentega Asin", "Parsley"], steps: ["Olesi kedua sisi roti dengan mentega asin.", "Taburi campuran keju mozzarella dan cheddar di atas roti.", "Panggang di teflon atau oven hingga roti kecokelatan dan keju meleleh.", "Taburi parsley kering.", "Sajikan hangat."], image_url: "assets/ASIN-2.jpg" },
+                { id: 23, name: "Savory Sugar Pudding", time: "35 Menit", ingredients: ["500ml Susu UHT", "100g Keju Cheddar Parut", "1 bungkus Agar-agar Plain", "Garam & Merica"], steps: ["Campur susu dan agar-agar di panci.", "Masak sambil diaduk, masukkan keju parut.", "Beri sedikit garam dan merica untuk rasa gurih.", "Aduk hingga keju larut dan mendidih.", "Tuang ke cetakan."], image_url: "assets/ASIN-3.jpg" },
+                { id: 24, name: "Sea Salt Cream Bite", time: "20 Menit", ingredients: ["20 keping Crackers Asin", "100g Cream Cheese", "Sejumput Garam Kasar"], steps: ["Kocok cream cheese hingga lembut.", "Oleskan di antara dua keping crackers (sandwich).", "Taburi sedikit garam kasar di atasnya.", "Simpan di kulkas sebentar agar isian set.", "Siap dinikmati."], image_url: "assets/ASIN-4.jpg" },
+                { id: 25, name: "Salted Egg Cloud Cake", time: "55 Menit", ingredients: ["Adonan Sponge Cake dasar", "3 butir Kuning Telur Asin matang", "50ml Susu"], steps: ["Haluskan kuning telur asin dengan susu hingga menjadi pasta.", "Siapkan adonan sponge cake.", "Tuang sebagian adonan ke loyang, beri pasta telur asin, tutup dengan sisa adonan.", "Panggang 180°C selama 30-35 menit.", "Sajikan."], image_url: "assets/ASIN-5.jpg" },
+                { id: 26, name: "Salt Kiss Tart", time: "60 Menit", ingredients: ["200g Dark Chocolate", "200ml Heavy Cream", "1 sdt Garam Maldon (Garam keping)", "Kulit Tart Matang"], steps: ["Cincang cokelat, taruh di mangkuk.", "Panaskan cream hingga hampir mendidih, tuang ke cokelat.", "Diamkan 1 menit, lalu aduk hingga licin (Ganache).", "Tuang ke kulit tart, biarkan mengental.", "Taburi garam Maldon di atasnya saat disajikan."], image_url: "assets/ASIN-6.jpg" },
+                { id: 27, name: "Butter Salt Soft Cookie", time: "35 Menit", ingredients: ["200g Salted Butter", "150g Tepung Terigu", "50g Tepung Maizena", "50g Gula Halus"], steps: ["Kocok salted butter dan gula halus hingga pucat.", "Masukkan tepung terigu dan maizena, aduk rata dengan spatula.", "Masukkan ke piping bag, semprotkan ke loyang.", "Panggang 150°C selama 20-25 menit hingga garing.", "Dinginkan di cooling rack."], image_url: "assets/ASIN-7.jpg" },
+                { id: 28, name: "Golden Salt Crepes", time: "25 Menit", ingredients: ["Adonan Crepes (Tepung, Telur, Susu)", "Mentega Asin (Salted Butter)"], steps: ["Buat dadar tipis (crepes) di teflon.", "Saat masih panas di teflon, oleskan salted butter yang banyak.", "Lipat segitiga.", "Rasa gurih asin mentega akan sangat terasa.", "Sajikan panas."], image_url: "assets/ASIN-8.jpg" },
+                { id: 29, name: "Cheesy Salt Swirl", time: "30 Menit", ingredients: ["Kulit Soes/Choux matang", "200ml Susu", "50g Keju Cheddar", "1 sdm Maizena"], steps: ["Buat vla keju: masak susu, keju parut, dan maizena hingga kental.", "Dinginkan vla, masukkan ke plastik segitiga.", "Lubangi bagian bawah kulit soes.", "Semprotkan vla keju ke dalamnya hingga penuh.", "Taburi sedikit parutan keju di atasnya."], image_url: "assets/ASIN-9.jpg" },
+                { id: 30, name: "Savory Sweet Puff", time: "40 Menit", ingredients: ["Lembaran Puff Pastry instan", "100g Keju Parmesan Bubuk", "1 Kuning Telur"], steps: ["Potong puff pastry memanjang (sticks).", "Olesi dengan kuning telur.", "Taburi keju parmesan yang banyak di seluruh permukaan.", "Panggang 200°C selama 15-20 menit hingga mengembang dan kecokelatan.", "Camilan gurih renyah."], image_url: "assets/ASIN-10.jpg" }
+            ],
+            'Gurih': [
+                { id: 31, name: "Savory Corn Milk Pudding", time: "40 Menit", ingredients: ["2 bonggol Jagung Manis", "600ml Santan Cair", "1 bungkus Agar-agar", "Gula & Garam"], steps: ["Pipil jagung, blender dengan sebagian santan, lalu saring.", "Campur sari jagung, sisa santan, agar-agar, gula, dan sedikit garam.", "Masak hingga mendidih dan mengental.", "Tuang ke cetakan, biarkan dingin.", "Rasanya manis gurih khas jagung."], image_url: "assets/GURIH-1.jpg" },
+                { id: 32, name: "Cheese Panna Cotta", time: "35 Menit", ingredients: ["250ml Cream", "250ml Susu", "50g Keju Edam Parut", "Gelatin"], steps: ["Panaskan susu dan cream.", "Masukkan keju edam parut, aduk hingga larut (jangan sampai mendidih besar).", "Masukkan gelatin yang sudah dimekarkan.", "Saring agar tekstur halus.", "Tuang ke gelas dan dinginkan."], image_url: "assets/GURIH-2.jpg" },
+                { id: 33, name: "Lupis Sticky Rice Savory", time: "60 Menit", ingredients: ["500g Beras Ketan (rendam 2 jam)", "Daun Pisang", "Kelapa Parut + Garam", "Saus Gula Merah"], steps: ["Bungkus ketan dengan daun pisang membentuk segitiga.", "Rebus dalam air mendidih selama 1-2 jam hingga matang padat.", "Gulingkan di kelapa parut yang sudah dikukus dengan garam.", "Sajikan dengan siraman saus gula merah kental.", "Gurih kelapa bertemu manis gula."], image_url: "assets/GURIH-3.jpg" },
+                { id: 34, name: "Savory Cheese Bread Pudding", time: "50 Menit", ingredients: ["5 lembar Roti Tawar (potong dadu)", "300ml Susu Cair", "2 Telur", "Keju Cheddar & Kismis"], steps: ["Tata potongan roti di loyang.", "Campur susu, telur, dan sedikit gula, aduk rata.", "Siramkan ke atas roti, biarkan meresap 10 menit.", "Taburi keju parut dan kismis.", "Panggang 170°C selama 30 menit."], image_url: "assets/GURIH-4.jpg" },
+                { id: 35, name: "Coconut Mochi Bites", time: "45 Menit", ingredients: ["200g Tepung Ketan", "250ml Santan Kental", "Gula Pasir", "Tepung Maizena Sangrai (taburan)"], steps: ["Campur tepung ketan, gula, dan santan. Aduk rata hingga licin.", "Kukus adonan selama 20-30 menit hingga matang transparan.", "Angkat, letakkan di alas yang sudah ditaburi maizena sangrai.", "Bentuk bulat-bulat selagi hangat.", "Teksturnya kenyal dan sangat gurih santan."], image_url: "assets/GURIH-5.jpg" },
+                { id: 36, name: "Mini Cheese Tarts", time: "55 Menit", ingredients: ["Kulit Tart", "200g Cream Cheese", "50g Mascarpone", "1 Telur", "Susu"], steps: ["Kocok cream cheese, mascarpone, dan gula hingga lembut.", "Tambahkan telur dan sedikit susu, aduk rata.", "Tuang ke dalam kulit tart (shell).", "Olesi permukaan dengan kuning telur.", "Panggang hingga isian set dan permukaan keemasan."], image_url: "assets/GURIH-6.jpg" },
+                { id: 37, name: "Savory Potato Custard Cake", time: "50 Menit", ingredients: ["200g Kentang Kukus (haluskan)", "3 Telur", "100ml Santan/Susu", "Gula Merah"], steps: ["Campur kentang halus, telur, santan, dan irisan gula merah.", "Blender hingga halus jika perlu.", "Tuang ke loyang yang dialasi daun pisang (opsional).", "Kukus hingga matang padat.", "Potong-potong setelah dingin."], image_url: "assets/GURIH-7.jpg" },
+                { id: 38, name: "Sea Salt Crème Brûlée", time: "50 Menit", ingredients: ["4 Kuning Telur", "300ml Heavy Cream", "Garam Laut", "Gula Pasir (topping)"], steps: ["Kocok kuning telur dan sedikit gula.", "Panaskan cream (jangan mendidih), tuang perlahan ke telur sambil diaduk.", "Beri garam laut secukupnya.", "Tuang ke ramekin, panggang teknik water bath (bain-marie) 150°C selama 40 menit.", "Beri gula di atasnya, bakar dengan torch."], image_url: "assets/GURIH-8.jpg" },
+                { id: 39, name: "Coconut Milk Custard", time: "35 Menit", ingredients: ["200ml Santan Kental", "3 Telur Ayam", "100g Gula Pasir", "Daun Pandan"], steps: ["Kocok telur dan gula hingga larut.", "Masukkan santan kental dan perasan daun pandan.", "Saring ke dalam mangkuk tahan panas.", "Kukus dengan api sedang selama 20-30 menit.", "Sajikan dengan ketan atau roti."], image_url: "assets/GURIH-9.jpg" },
+                { id: 40, name: "Silky Coconut Tofu Pudding", time: "30 Menit", ingredients: ["1 liter Susu Kedelai Manis", "1 sdt Agar-agar bubuk", "1/2 sdt Jelly bubuk"], steps: ["Campur semua bahan di panci.", "Masak dengan api sedang sambil diaduk hingga mendidih.", "Matikan api, aduk sebentar hingga uap berkurang.", "Saring ke dalam wadah/jar.", "Dinginkan. Teksturnya sangat lembut seperti kembang tahu."], image_url: "assets/GURIH-10.jpg" }
+            ],
+            'Manis': [
+                { id: 41, name: "Puding Cokelat Susu", time: "25 Menit", ingredients: ["1 liter Susu Cokelat", "1 bungkus Agar-agar Cokelat", "100g Dark Chocolate (cincang)", "Gula sesuai selera"], steps: ["Campur agar-agar dan susu di panci.", "Masak hingga hangat, masukkan cincangan cokelat.", "Aduk terus hingga cokelat leleh dan mendidih.", "Tuang ke cetakan puding.", "Sajikan dengan vla vanilla."], image_url: "assets/MANIS-1.jpg" },
+                { id: 42, name: "Donat Kentang Lembut", time: "120 Menit", ingredients: ["250g Tepung Terigu", "100g Kentang Kukus Halus", "1 sdt Ragi Instan", "2 Kuning Telur", "Susu Dingin"], steps: ["Campur tepung, ragi, gula, kentang, dan telur.", "Tuang susu sedikit demi sedikit sambil diuleni hingga kalis.", "Masukkan mentega dan garam, uleni hingga kalis elastis.", "Diamkan 45 menit hingga mengembang. Bentuk cincin.", "Goreng api sedang, taburi gula halus."], image_url: "assets/MANIS-2.jpg" },
+                { id: 43, name: "Creme Brulee Simple", time: "45 Menit", ingredients: ["400ml Heavy Cream", "4 Kuning Telur", "60g Gula Pasir", "Ekstrak Vanilla"], steps: ["Panaskan cream dan vanilla hingga hangat.", "Kocok kuning telur dan gula. Tuang cream hangat perlahan.", "Saring, tuang ke ramekin.", "Panggang water bath 150°C selama 30-40 menit.", "Dinginkan, beri taburan gula, torch hingga jadi karamel keras."], image_url: "assets/MANIS-3.jpg" },
+                { id: 44, name: "Es Krim Vanila 3 Bahan", time: "6 Jam", ingredients: ["300ml Whipping Cream", "150ml Susu Kental Manis", "1 sdm Pasta Vanilla"], steps: ["Pastikan cream sangat dingin. Mixer hingga kaku (stiff peak).", "Masukkan susu kental manis dan vanilla.", "Aduk balik perlahan (folding) agar udara tidak keluar.", "Tuang ke wadah, bekukan 6 jam.", "Tekstur lembut tanpa mesin es krim."], image_url: "assets/MANIS-4.jpg" },
+                { id: 45, name: "Panna Cotta Strawberry", time: "35 Menit", ingredients: ["250ml Susu", "250ml Cream", "Gula", "Gelatin", "Selai Stroberi"], steps: ["Masak susu, cream, dan gula hingga hangat.", "Masukkan gelatin yang sudah dimekarkan.", "Tuang ke gelas miring (untuk variasi) atau lurus.", "Dinginkan hingga set.", "Beri topping selai stroberi di atasnya."], image_url: "assets/MANIS-5.jpg" },
+                { id: 46, name: "Cookies Chocolate Chip Chewy", time: "35 Menit", ingredients: ["150g Butter", "100g Brown Sugar", "200g Tepung Terigu", "Choco Chips"], steps: ["Mixer butter dan gula hingga creamy.", "Masukkan telur, aduk rata. Masukkan tepung.", "Masukkan choco chips, aduk rata dengan spatula.", "Sendokkan ke loyang, beri jarak.", "Panggang 170°C selama 15 menit."], image_url: "assets/MANIS-6.jpg" },
+                { id: 47, name: "Cinnamon Rolls Cream Cheese", time: "150 Menit", ingredients: ["Adonan Roti (Tepung, Ragi, Susu)", "Isian: Brown Sugar + Kayu Manis Bubuk + Butter"], steps: ["Gilas adonan roti hingga pipih persegi panjang.", "Olesi butter, taburi campuran gula dan kayu manis.", "Gulung memanjang, potong-potong setebal 3cm.", "Susun di loyang, diamkan hingga mengembang.", "Panggang hingga kecokelatan, beri glaze gula."], image_url: "assets/MANIS-7.jpg" },
+                { id: 48, name: "Brownies Fudgy", time: "55 Menit", ingredients: ["150g Dark Chocolate", "50g Butter", "40ml Minyak", "2 Telur", "150g Gula Halus (penting untuk shiny crust)", "100g Tepung"], steps: ["Lelehkan cokelat, butter, dan minyak.", "Kocok telur dan gula halus hingga gula benar-benar larut.", "Campurkan lelehan cokelat ke adonan telur.", "Masukkan tepung, aduk rata (jangan overmix).", "Panggang 180°C (30 menit)."], image_url: "assets/MANIS-8.jpg" },
+                { id: 49, name: "Banoffee Pie Mudah", time: "60 Menit", ingredients: ["Remahan Biskuit + Mentega (Base)", "Karamel Dulce de Leche", "Pisang Ambon", "Whipped Cream"], steps: ["Padatkan remahan biskuit di dasar wadah.", "Tuang lapisan karamel/dulce de leche.", "Susun irisan pisang di atasnya.", "Tutup dengan whipped cream tebal.", "Taburi bubuk cokelat."], image_url: "assets/MANIS-9.jpg" },
+                { id: 50, name: "Cheesecake No-Bake", time: "5 Jam", ingredients: ["250g Cream Cheese", "200ml Whipping Cream", "Gula Halus", "Air Lemon", "Base Biskuit"], steps: ["Kocok cream cheese dan gula hingga lembut.", "Masukkan whipping cream cair, mixer hingga kental dan kaku.", "Beri sedikit air lemon.", "Tuang ke atas lapisan biskuit di loyang bongkar pasang.", "Bekukan di kulkas minimal 5 jam."], image_url: "assets/MANIS-10.jpg" }
+            ]
+        };
+
+        // --- LOGIC APLIKASI ---
+        let favorites = JSON.parse(localStorage.getItem('ss_favorites')) || [];
+        let currentCategory = '';
+
+        function enterApp() {
+            const splash = document.getElementById('splash-screen');
+            splash.style.opacity = '0';
+            splash.style.pointerEvents = 'none';
+            setTimeout(() => { 
+                splash.style.display = 'none';
+                showPage('view-home');
+                renderRecommended(); // Generate rekomendasi saat masuk
+            }, 600); 
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(enterApp, 2000); 
+        });
+
+        function showPage(pageId) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            // Reset Nav Active State
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            if(pageId === 'view-home') document.getElementById('btn-home').classList.add('active');
+            
+            // Khusus Nav Favorit
+            if(pageId === 'view-fav') {
+                document.getElementById('btn-fav').classList.add('active');
+                renderFavorites();
+            }
+            window.scrollTo(0,0);
+        }
+
+        // Logic Rekomendasi Resep (Random Pick)
+        function renderRecommended() {
+            const container = document.getElementById('recommended-container');
+            if(!container) return;
+
+            // 1. Kumpulkan semua resep jadi satu array datar
+            let allRecipes = [];
+            Object.keys(db).forEach(cat => {
+                db[cat].forEach(r => {
+                    // Tambahkan properti kategori asli untuk referensi
+                    allRecipes.push({...r, category: cat});
+                });
+            });
+
+            // 2. Acak (Shuffle)
+            const shuffled = allRecipes.sort(() => 0.5 - Math.random());
+
+            // 3. Ambil 5 resep teratas
+            const selected = shuffled.slice(0, 5);
+
+            // 4. Render
+            container.innerHTML = '';
+            selected.forEach(res => {
+                const isFav = favorites.some(f => f.id === res.id);
+                const imageUrl = res.image_url || 'https://via.placeholder.com/150?text=Food';
+                const cat = res.category; // Gunakan kategori asli
+
+                container.innerHTML += `
+                    <div class="recipe-card d-flex align-items-center">
+                        <div style="position:relative; width:80px; height:80px; flex-shrink:0;">
+                            <img src="${imageUrl}" class="thumb-img" 
+                                 onclick="renderDetail(${res.id}, '${cat}')" 
+                                 onerror="this.src='https://via.placeholder.com/150/e9ecef/8d4159?text=Yum!'">
+                        </div>
+                        
+                        <div class="ms-3 flex-grow-1" onclick="renderDetail(${res.id}, '${cat}')">
+                            <h6 class="fw-bold mb-1" style="font-size: 0.95rem; color: var(--text-dark);">${res.name}</h6>
+                            <div class="d-flex align-items-center">
+                                <span class="badge-sage"><i class="bi bi-clock me-1"></i>${res.time}</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn border-0 p-2" onclick="toggleFav(${res.id}, '${cat}')" style="z-index:2;">
+                            <i class="bi ${isFav ? 'bi-heart-fill text-danger' : 'bi-heart'} fs-4"></i>
+                        </button>
+                    </div>`;
+            });
+        }
+
+        // Render List Horizontal
+        function renderList(cat) {
+            currentCategory = cat;
+            const container = document.getElementById('list-container');
+            document.getElementById('cat-title').innerText = "Rasa " + cat;
+            document.getElementById('search-input').value = ''; // Reset search
+            
+            const items = db[cat] || [];
+            displayItems(items, container, cat);
+            showPage('view-list');
+        }
+
+        // Helper: Menampilkan item ke container
+        function displayItems(items, container, cat) {
+            container.innerHTML = items.length === 0 ? 
+                '<div class="text-center mt-5 text-muted"><i class="bi bi-search fs-1"></i><p class="mt-2">Resep tidak ditemukan.</p></div>' : '';
+            
+            items.forEach(res => {
+                const isFav = favorites.some(f => f.id === res.id);
+                // Fallback gambar jika error atau kosong
+                const imageUrl = res.image_url || 'https://via.placeholder.com/150?text=Food';
+
+                container.innerHTML += `
+                    <div class="recipe-card d-flex align-items-center">
+                        <div style="position:relative; width:80px; height:80px; flex-shrink:0;">
+                            <img src="${imageUrl}" class="thumb-img" 
+                                 onclick="renderDetail(${res.id}, '${cat}')" 
+                                 onerror="this.src='https://via.placeholder.com/150/e9ecef/8d4159?text=Yum!'">
+                        </div>
+                        
+                        <div class="ms-3 flex-grow-1" onclick="renderDetail(${res.id}, '${cat}')">
+                            <h6 class="fw-bold mb-1" style="font-size: 0.95rem; color: var(--text-dark);">${res.name}</h6>
+                            <div class="d-flex align-items-center">
+                                <span class="badge-sage"><i class="bi bi-clock me-1"></i>${res.time}</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn border-0 p-2" onclick="toggleFav(${res.id}, '${cat}')" style="z-index:2;">
+                            <i class="bi ${isFav ? 'bi-heart-fill text-danger' : 'bi-heart'} fs-4"></i>
+                        </button>
+                    </div>`;
+            });
+        }
+
+        // Search Logic
+        function filterRecipes() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const container = document.getElementById('list-container');
+            
+            // Ambil data dari kategori yang sedang aktif
+            const items = db[currentCategory] || [];
+            
+            const filtered = items.filter(res => res.name.toLowerCase().includes(query));
+            displayItems(filtered, container, currentCategory);
+        }
+
+        // Detail Page
+        function renderDetail(id, cat) {
+            // Cari data di DB atau di Favorit jika kategori 'Favorit'
+            let res;
+            if (cat === 'Favorit') {
+                res = favorites.find(x => x.id === id);
+                // Jika ditemukan di fav, ambil kategori aslinya untuk fallback
+                if(res && !res.category) res.category = 'Manis'; // Default safe
+            } else {
+                res = db[cat] ? db[cat].find(x => x.id === id) : null;
+            }
+
+            if (!res) return;
+
+            // Pastikan kategori asli tersimpan untuk tombol back
+            const originalCat = res.category || cat;
+            const container = document.getElementById('view-detail');
+            const isFav = favorites.some(f => f.id === res.id);
+            const imageUrl = res.image_url || 'https://via.placeholder.com/600x400?text=Resep';
+
+            container.innerHTML = `
+                <div class="detail-header">
+                    <div class="d-flex align-items-center mb-4">
+                         <button class="btn text-white p-0 me-3" onclick="handleBack('${originalCat}')"><i class="bi bi-arrow-left fs-2"></i></button>
+                         <span class="text-white opacity-75 small">Detail Resep</span>
+                    </div>
+                    <h2 class="fw-bold mb-1">${res.name}</h2>
+                    <p class="mb-0 opacity-75 small"><i class="bi bi-tag-fill me-1"></i>${originalCat} &bull; <i class="bi bi-stopwatch-fill me-1"></i>${res.time}</p>
+                </div>
+                
+                <div class="container animate-up">
+                    <img src="${imageUrl}" class="img-fluid bg-white" 
+                         onerror="this.src='https://via.placeholder.com/600x400/e9ecef/8d4159?text=No+Image'"
+                         style="border-radius: 20px; margin-top: -30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); height: 250px; width: 100%; object-fit: cover; display:block;">
+                    
+                    <div class="ingredient-box shadow-sm mb-4 mt-4">
+                        <h6 class="fw-bold text-berry mb-3">Bahan-Bahan:</h6>
+                        <ul class="list-unstyled mb-0">
+                            ${res.ingredients.map(i => `<li class="mb-2 small border-bottom pb-2 d-flex"><i class="bi bi-check-circle-fill me-2 text-sage"></i>${i}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <h6 class="fw-bold mb-3 px-2">Cara Membuat:</h6>
+                    <div class="px-2 mb-5">
+                        ${res.steps.map((s, i) => `
+                            <div class="d-flex mb-4">
+                                <div class="step-circle shadow-sm">${i+1}</div>
+                                <p class="small mb-0 text-secondary pt-1" style="line-height:1.6;">${s}</p>
+                            </div>`).join('')}
+                    </div>
+
+                    <div style="height: 80px;"></div> <!-- Spacer untuk floating button -->
+                </div>
+
+                <!-- Floating Action Button for Favorite -->
+                <div class="fixed-bottom container pb-4" style="max-width:480px; margin:0 auto; left:0; right:0;">
+                    <button class="btn w-100 py-3 rounded-pill fw-bold shadow-lg ${isFav ? 'btn-light text-danger border-danger' : 'btn-dark'}" 
+                        style="${!isFav ? 'background:var(--berry); border:none' : ''}" 
+                        onclick="toggleFav(${res.id}, '${originalCat}', true)">
+                        ${isFav ? '<i class="bi bi-heart-fill me-2"></i>Hapus Favorit' : '<i class="bi bi-heart me-2"></i>Simpan Favorit'}
+                    </button>
+                </div>`;
+            
+            showPage('view-detail');
+        }
+
+        // Handle Back Button Logic
+        function handleBack(cat) {
+            if (document.getElementById('btn-fav').classList.contains('active') || cat === 'Favorit') {
+                showPage('view-fav');
+            } else {
+                renderList(cat);
+            }
+        }
+
+        function toggleFav(id, cat, isDetail = false) {
+            // Cari data resep master
+            let res = db[cat] ? db[cat].find(x => x.id === id) : null;
+            
+            // Jika tidak ketemu di DB (mungkin sedang di halaman fav), cari di array favorites
+            if (!res) {
+                res = favorites.find(x => x.id === id);
+            }
+            
+            if (!res) return;
+
+            const idx = favorites.findIndex(f => f.id === id);
+            if(idx > -1) {
+                favorites.splice(idx, 1);
+            } else {
+                // Simpan kategori asli agar bisa kembali ke list yang benar
+                favorites.push({...res, category: cat});
+            }
+            
+            localStorage.setItem('ss_favorites', JSON.stringify(favorites));
+
+            // Refresh UI sesuai konteks
+            if(isDetail) {
+                renderDetail(id, cat);
+            } else if(document.getElementById('view-fav').classList.contains('active')) {
+                renderFavorites();
+            } else {
+                // Refresh list tapi pertahankan search result jika ada
+                // Cek apakah element search input ada (bisa jadi di home)
+                const searchEl = document.getElementById('search-input');
+                if(searchEl && searchEl.value) {
+                    filterRecipes();
+                } else if(document.getElementById('list-container').innerHTML !== "") {
+                    // Kalau sedang di view list
+                    displayItems(db[cat] || [], document.getElementById('list-container'), cat);
+                } else {
+                    // Kalau sedang di home (recommended)
+                    renderRecommended();
+                }
+            }
+        }
+
+        function renderFavorites() {
+            const container = document.getElementById('fav-container');
+            if (favorites.length === 0) {
+                container.innerHTML = `
+                <div class="text-center py-5 opacity-50">
+                    <i class="bi bi-folder2-open fs-1"></i>
+                    <p class="mt-3 small">Belum ada resep favorit.<br>Yuk simpan resep yang kamu suka!</p>
+                </div>`;
+                return;
+            }
+            // Tampilkan item favorit (gunakan fungsi displayItems yang sama)
+            // Kita inject properti kategori ke fungsi display agar navigasi back berjalan lancar
+            
+            container.innerHTML = '';
+            favorites.forEach(res => {
+                const originalCat = res.category || 'Manis';
+                const imageUrl = res.image_url || 'https://via.placeholder.com/150?text=Food';
+
+                container.innerHTML += `
+                    <div class="recipe-card d-flex align-items-center">
+                        <div style="position:relative; width:80px; height:80px; flex-shrink:0;">
+                            <img src="${imageUrl}" class="thumb-img" 
+                                 onclick="renderDetail(${res.id}, 'Favorit')" 
+                                 onerror="this.src='https://via.placeholder.com/150/e9ecef/8d4159?text=Yum!'">
+                        </div>
+                        
+                        <div class="ms-3 flex-grow-1" onclick="renderDetail(${res.id}, 'Favorit')">
+                            <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">${res.name}</h6>
+                            <div class="d-flex align-items-center">
+                                <span class="badge-sage me-2">${originalCat}</span>
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i>${res.time}</small>
+                            </div>
+                        </div>
+                        
+                        <button class="btn border-0 p-2" onclick="toggleFav(${res.id}, '${originalCat}')">
+                            <i class="bi bi-heart-fill text-danger fs-4"></i>
+                        </button>
+                    </div>`;
+            });
+        }
+    </script>
+</body>
+</html>
