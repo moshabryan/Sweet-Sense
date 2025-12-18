@@ -1,13 +1,13 @@
 {
   "id": "./",
-  "name": "PWA Template Responsif",
+  "name": "SweetSense",
   "short_name": "SweetSense",
   "description": "Dirancang sebagai aplikasi buku resep dessert digital dengan tampilan moderen sederhana dan responsif menggunakan framework bootstrap.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#4F46E5",
-  "theme_color": "#4F46E5",
+  "background_color": "#8D4159E",
+  "theme_color": "#ffffff",
   "orientation": "portrait",
   "lang": "id",
   "icons": [
@@ -48,7 +48,7 @@
     }
   ],
   "categories": [
-    "productivity",
-    "utilities"
+    "food",
+    "lifestyle"
   ]
 }
