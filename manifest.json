@@ -12,25 +12,25 @@
   "lang": "id",
   "icons": [
     {
-      "src": "assets/logo2.png",
-      "sizes": "500x500",
+      "src": "assets/LOGO2.png",
+      "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "assets/logo2.png",
+      "src": "assets/LOGO2.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "screenshots": [
     {
-      "src": "icons/LOGO1.png",
-      "sizes": "1080x1920",
+      "src": "assets/LOGO3.png",
+      "sizes": "512x512",
       "type": "image/png"
     },
     {
       "src": "icons/LOGO1.png",
-      "sizes": "1080x1920",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
@@ -42,7 +42,7 @@
       "icons": [
         {
           "src": "assets/LOGO2.jpg",
-          "sizes": "500x500"
+          "sizes": "512x512"
         }
       ]
     }
