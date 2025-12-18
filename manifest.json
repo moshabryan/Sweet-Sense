@@ -12,12 +12,12 @@
   "lang": "id",
   "icons": [
     {
-      "src": "icons/icon-192x192-A.png",
+      "src": "assets/LOGO2.jpg",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-512x512-B.png",
+      "src": "assets/LOGO2.jpg",
       "sizes": "512x512",
       "type": "image/png"
     }
@@ -41,7 +41,7 @@
       "url": "./index.html",
       "icons": [
         {
-          "src": "icons/icon-192x192-A.png",
+          "src": "assets/LOGO2.jpg",
           "sizes": "192x192"
         }
       ]
@@ -51,5 +51,4 @@
     "productivity",
     "utilities"
   ]
-  
 }
