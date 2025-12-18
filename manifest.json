@@ -24,15 +24,6 @@
   ],
   "screenshots": [
     {
-<<<<<<< HEAD
-      "src": "icons/screenshot1.png",
-      "sizes": "1080x1920",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/screenshot2.png",
-      "sizes": "1080x1920",
-=======
       "src": "assets/LOGO3.png",
       "sizes": "512x512",
       "type": "image/png"
@@ -40,7 +31,6 @@
     {
       "src": "icons/LOGO1.png",
       "sizes": "512x512",
->>>>>>> 18382dfcc48d922e1c89e5e3cd4d9de7dd5adf3e
       "type": "image/png"
     }
   ],
