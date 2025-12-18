@@ -41,7 +41,7 @@
       "url": "./index.html",
       "icons": [
         {
-          "src": "assets/LOGO2.jpg",
+          "src": "assets/LOGO2.png",
           "sizes": "512x512"
         }
       ]
