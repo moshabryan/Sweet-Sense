@@ -1,8 +1,8 @@
 {
   "id": "./",
   "name": "PWA Template Responsif",
-  "short_name": "PWA Demo",
-  "description": "Aplikasi PWA responsif untuk demonstrasi template dasar Progressive Web App dengan dukungan offline dan installable.",
+  "short_name": "SweetSense",
+  "description": "Dirancang sebagai aplikasi buku resep dessert digital dengan tampilan moderen sederhana dan responsif menggunakan framework bootstrap.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
