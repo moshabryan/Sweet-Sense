@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <LINK rel="icon" type="images/png"href="assets/LOGO1.jpg"></LINK>
+    <LINK rel="icon" type="images/png"href="assets/LOGO1.png"></LINK>
     <title>SweetSense - Dessert Digital Book</title>
     <link rel="manifest " href="manifest.json">
     
@@ -191,7 +191,7 @@
     <!-- Splash Screen -->
     <div id="splash-screen">
         <div class="splash-logo-container" onclick="enterApp()">
-            <img src="assets/LOGO2.jpg" alt="SS" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:white;font-weight:bold;font-size:2.5rem\'>SS</span>'">
+            <img src="assets/LOGO2.png" alt="SS" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:white;font-weight:bold;font-size:2.5rem\'>SS</span>'">
         </div>
         <h2 class="mt-4 fw-bold" style="color: var(--berry)">SweetSense</h2>
     </div>
@@ -647,8 +647,8 @@ const assetsToCache = [
   `${BASE_URL}`,
   `${BASE_URL}index.html`,
   `${BASE_URL}manifest.json`,
-  `${BASE_URL}assets/LOGO1.jpg`,
-  `${BASE_URL}assets/LOGO2.jpg`
+  `${BASE_URL}assets/LOGO1.png`,
+  `${BASE_URL}assets/LOGO2.png`assets/LOGO2.png
 ];
 
 // Tahap Install
@@ -707,5 +707,6 @@ self.addEventListener("fetch", event => {
             });
         }
     </script>
+    <!-- manifest sama service.worker dah masuk ya gess tinggal ganti2 -->
 </body>
 </html>
