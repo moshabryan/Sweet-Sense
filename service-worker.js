@@ -7,8 +7,12 @@ const urlsToCache = [
   `${BASE_URL}offline.html`,
   `${BASE_URL}assets/style.css`,
   `${BASE_URL}manifest.json`,
+<<<<<<< HEAD
   `${BASE_URL}icons/icon-192x192.png`,
   `${BASE_URL}icons/icon-512x512.png`,
+=======
+  `${BASE_URL}assets/LOGO2.png`,
+>>>>>>> 18382dfcc48d922e1c89e5e3cd4d9de7dd5adf3e
 ];
 
 // Install Service Worker & simpan file ke cache
@@ -72,3 +76,7 @@ self.addEventListener("fetch", event => {
     );
   }
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 18382dfcc48d922e1c89e5e3cd4d9de7dd5adf3e

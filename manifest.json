@@ -1,5 +1,6 @@
 {
   "id": "./",
+<<<<<<< HEAD
   "name": "PWA Template Responsif",
   "short_name": "PWA Demo",
   "description": "Aplikasi PWA responsif untuk demonstrasi template dasar Progressive Web App dengan dukungan offline dan installable.",
@@ -8,22 +9,42 @@
   "display": "standalone",
   "background_color": "#4F46E5",
   "theme_color": "#4F46E5",
+=======
+  "name": "SweetSense",
+  "short_name": "SweetSense",
+  "description": "Dirancang sebagai aplikasi buku resep dessert digital dengan tampilan moderen sederhana dan responsif menggunakan framework bootstrap.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#8D4159",
+  "theme_color": "#ffffff",
+>>>>>>> 18382dfcc48d922e1c89e5e3cd4d9de7dd5adf3e
   "orientation": "portrait",
   "lang": "id",
   "icons": [
     {
+<<<<<<< HEAD
       "src": "icons/icon-192x192-A.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
       "src": "icons/icon-512x512-B.png",
+=======
+      "src": "assets/LOGO2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/LOGO2.png",
+>>>>>>> 18382dfcc48d922e1c89e5e3cd4d9de7dd5adf3e
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "screenshots": [
     {
+<<<<<<< HEAD
       "src": "icons/screenshot1.png",
       "sizes": "1080x1920",
       "type": "image/png"
@@ -31,6 +52,15 @@
     {
       "src": "icons/screenshot2.png",
       "sizes": "1080x1920",
+=======
+      "src": "assets/LOGO3.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/LOGO1.png",
+      "sizes": "512x512",
+>>>>>>> 18382dfcc48d922e1c89e5e3cd4d9de7dd5adf3e
       "type": "image/png"
     }
   ],
@@ -41,14 +71,26 @@
       "url": "./index.html",
       "icons": [
         {
+<<<<<<< HEAD
           "src": "icons/icon-192x192-A.png",
           "sizes": "192x192"
+=======
+          "src": "assets/LOGO2.png",
+          "sizes": "512x512"
+>>>>>>> 18382dfcc48d922e1c89e5e3cd4d9de7dd5adf3e
         }
       ]
     }
   ],
   "categories": [
+<<<<<<< HEAD
     "productivity",
     "utilities"
   ]
 }
+=======
+    "food",
+    "lifestyle"
+  ]
+}
+>>>>>>> 18382dfcc48d922e1c89e5e3cd4d9de7dd5adf3e
