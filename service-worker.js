@@ -1,74 +1,70 @@
-const CACHE_NAME = "pwa-template-v2";
-const BASE_URL = self.registration.scope;
+const CACHE_NAME = "sweetsense-v4";
 
+// Daftar file yang WAJIB ada agar aplikasi bisa jalan offline.
+// Saya hapus 'assets/style.css' karena di index.html kamu pakai style internal.
 const urlsToCache = [
-  `${BASE_URL}`,
-  `${BASE_URL}index.html`,
-  `${BASE_URL}offline.html`,
-  `${BASE_URL}assets/style.css`,
-  `${BASE_URL}manifest.json`,
-  `${BASE_URL}assets/LOGO2.jpg`,
+  './',
+  './index.html',
+  './offline.html',
+  './manifest.json',
+  './assets/LOGO2.png'
 ];
 
-// Install Service Worker & simpan file ke cache
+// 1. Install Service Worker
 self.addEventListener("install", event => {
-  self.skipWaiting(); // langsung aktif tanpa reload manual
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-      .catch(err => console.error("Cache gagal dimuat:", err))
+      .then(cache => {
+        console.log("Service Worker: Caching files...", urlsToCache);
+        return cache.addAll(urlsToCache);
+      })
+      .catch(err => console.error("Service Worker: Cache Gagal!", err))
   );
 });
 
-// Aktivasi dan hapus cache lama
+// 2. Activate & Hapus Cache Lama
 self.addEventListener("activate", event => {
   event.waitUntil(
-    (async () => {
-      const keys = await caches.keys();
-      await Promise.all(
-        keys.map(key => {
-          if (key !== CACHE_NAME) {
-            console.log("Menghapus cache lama:", key);
-            return caches.delete(key);
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cache => {
+          if (cache !== CACHE_NAME) {
+            console.log("Service Worker: Hapus cache lama", cache);
+            return caches.delete(cache);
           }
         })
       );
-      await self.clients.claim(); // langsung klaim kontrol ke halaman
-    })()
+    })
   );
 });
 
-// Fetch event: cache-first untuk file lokal, network-first untuk API
+// 3. Fetch Strategy (Network First, lalu Cache, lalu Offline Page)
 self.addEventListener("fetch", event => {
-  const request = event.request;
-  const url = new URL(request.url);
+  // Abaikan request selain GET (seperti POST, chrome-extension, dll)
+  if (event.request.method !== "GET") return;
+  if (!event.request.url.startsWith("http")) return;
 
-  // Abaikan permintaan Chrome Extension, analytics, dll.
-  if (url.protocol.startsWith("chrome-extension")) return;
-  if (request.method !== "GET") return;
-
-  // File lokal (statis)
-  if (url.origin === self.location.origin) {
-    event.respondWith(
-      caches.match(request).then(response => {
-        return (
-          response ||
-          fetch(request).catch(() => caches.match(`${BASE_URL}offline.html`))
-        );
+  event.respondWith(
+    fetch(event.request)
+      .then(response => {
+        // Jika berhasil ambil dari internet, simpan copy-nya ke cache (agar nanti bisa offline)
+        const resClone = response.clone();
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, resClone);
+        });
+        return response;
       })
-    );
-  } 
-  // Resource eksternal (API, CDN, dsb.)
-  else {
-    event.respondWith(
-      fetch(request)
-        .then(networkResponse => {
-          const clone = networkResponse.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
-          return networkResponse;
-        })
-        .catch(() => caches.match(request))
-    );
-  }
+      .catch(() => {
+        // Jika internet mati, ambil dari cache
+        return caches.match(event.request).then(response => {
+          if (response) return response;
+          
+          // Jika tidak ada di cache (misal halaman baru), tampilkan halaman offline.html
+          if (event.request.headers.get("accept").includes("text/html")) {
+            return caches.match('./offline.html');
+          }
+        });
+      })
+  );
 });
-
