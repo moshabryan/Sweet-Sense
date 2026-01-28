@@ -782,17 +782,216 @@
         // --- RECIPE DATABASE ---
         const db = {
             'Pahit': [
-                { id: 1, name: "Dark Chocolate Bitter Mousse", time: "50 Menit", ingredients: ["200g Dark Chocolate (85% Kakao)", "4 Telur Ayam (Pisahkan)", "1 sdm Espresso Powder", "30g Unsalted Butter", "1 sdt Ekstrak Vanilla"], steps: ["Lelehkan dark chocolate dan butter dengan teknik double boiler (tim).", "Kocok kuning telur dan espresso hingga pucat, lalu campurkan ke cokelat leleh.", "Di wadah terpisah, kocok putih telur hingga kaku (stiff peaks).", "Lipat putih telur ke adonan cokelat secara bertahap menggunakan spatula.", "Tuang ke gelas saji, dinginkan di kulkas minimal 6 jam."], image_url: "assets/PAHIT-1.jpg" },
-                { id: 2, name: "Tiramisu Kopi Pahit", time: "45 Menit", ingredients: ["200g Biskuit Ladyfingers", "250ml Espresso Dingin", "250g Keju Mascarpone", "300ml Heavy Cream", "Bubuk Kakao (untuk taburan)"], steps: ["Kocok mascarpone dan heavy cream hingga lembut dan mengembang.", "Celupkan ladyfingers ke dalam espresso sebentar (jangan sampai lembek).", "Tata di dasar wadah, lapisi dengan krim mascarpone.", "Ulangi lapisan hingga wadah penuh.", "Simpan di kulkas semalaman, taburi bubuk kakao sebelum disajikan."], image_url: "assets/PAHIT-2.jpg" },
-                { id: 3, name: "Dark Matcha Pudding", time: "35 Menit", ingredients: ["2 sdm Bubuk Matcha Premium", "500ml Susu Almond/Soy", "1 Bungkus Agar-agar Plain", "50g Gula Pasir (opsional)"], steps: ["Larutkan bubuk matcha dengan sedikit air hangat agar tidak menggumpal.", "Campurkan susu, agar-agar, dan gula di panci. Masak dengan api sedang.", "Masukkan larutan matcha, aduk terus hingga mendidih.", "Tuang ke cetakan sambil disaring.", "Dinginkan hingga set."], image_url: "assets/PAHIT-3.jpg" },
-                { id: 4, name: "Bitter Orange Peel Choco Bark", time: "70 Menit", ingredients: ["200g Dark Chocolate 70%", "Kulit dari 2 buah Jeruk (Sunkist)", "Sejumput Sea Salt", "100ml Heavy Cream"], steps: ["Rebus kulit jeruk 2-3 kali untuk mengurangi rasa pahit, lalu potong kecil memanjang.", "Panaskan heavy cream, tuang ke potongan cokelat, aduk hingga menjadi ganache.", "Tuang ke loyang yang dialasi kertas roti, ratakan.", "Taburi kulit jeruk dan sea salt di atasnya.", "Bekukan hingga keras lalu potong-potong."], image_url: "assets/PAHIT-4.jpg" },
-                { id: 5, name: "Espresso Bitter Jelly", time: "30 Menit", ingredients: ["600ml Kopi Hitam Pekat", "1 Bungkus Jelly Powder (Nutrijell)", "30g Gula Aren (sedikit saja)"], steps: ["Campurkan bubuk jelly dan gula ke dalam panci.", "Tuang kopi hitam yang sudah diseduh, aduk rata.", "Masak hingga mendidih sambil terus diaduk.", "Tuang ke gelas-gelas kecil.", "Sajikan dingin dengan sedikit susu cair tawar jika suka."], image_url: "assets/PAHIT-5.jpg" },
-                { id: 6, name: "Choco-Charcoal Ice Cream (Bitter)", time: "7 Jam", ingredients: ["400ml Whipping Cream Cair", "150ml Susu Kental Manis", "2 sdm Bubuk Arang Aktif (Food Grade)"], steps: ["Kocok whipping cream hingga kaku (soft peak).", "Masukkan susu kental manis dan bubuk arang, mixer dengan kecepatan rendah hingga rata.", "Tuang ke wadah tertutup.", "Simpan di freezer minimal 6-7 jam.", "Siap disendok (scoop)."], image_url: "assets/PAHIT-6.jpg" },
-                { id: 7, name: "Dark Burnt Caramel Flan", time: "60 Menit", ingredients: ["100g Gula Pasir (untuk karamel)", "3 Telur Ayam", "250ml Susu Full Cream", "1 sdt Vanilla"], steps: ["Panaskan gula di teflon hingga meleleh dan berwarna cokelat tua (sedikit gosong untuk rasa pahit khas). Tuang ke dasar cetakan.", "Kocok telur, susu, dan vanilla hingga rata, lalu saring.", "Tuang adonan susu ke atas karamel yang sudah mengeras.", "Kukus dengan api kecil selama 30 menit.", "Dinginkan lalu balikkan ke piring saji."], image_url: "assets/PAHIT-7.jpg" },
-                { id: 8, name: "Bitter Matcha Brownies", time: "50 Menit", ingredients: ["150g White Chocolate", "2 sdm Matcha Powder", "100g Butter", "2 Telur", "100g Tepung Terigu"], steps: ["Lelehkan white chocolate dan butter.", "Kocok telur dan gula (opsional) hingga mengembang.", "Masukkan lelehan cokelat, lalu ayak tepung dan matcha ke dalamnya. Aduk lipat.", "Tuang ke loyang yang sudah dioles mentega.", "Panggang 170°C selama 25-30 menit."], image_url: "assets/PAHIT-8.jpg" },
-                { id: 9, name: "Dark Herbal Bitter Cookies", time: "40 Menit", ingredients: ["200g Tepung Terigu", "100g Butter", "1 sdm Kopi Bubuk Instan (untuk rasa pahit)", "1 Butir Kuning Telur", "Choco Chips secukupnya"], steps: ["Kocok butter dan gula halus (sedikit) hingga lembut.", "Masukkan kuning telur dan kopi bubuk, aduk rata.", "Masukkan tepung terigu, uleni hingga bisa dibentuk.", "Bentuk bulat-bulat, pipihkan, beri choco chip.", "Panggang 160°C hingga matang (sekitar 20 menit)."], image_url: "assets/PAHIT-9.jpg" },
-                { id: 10, name: "Grapefruit Bitter Sorbet", time: "5 Jam", ingredients: ["2 buah Grapefruit (Jeruk Bali Merah)", "1 buah Lemon (peras)", "3 sdm Madu", "100ml Air"], steps: ["Kupas grapefruit, ambil daging buahnya saja.", "Blender daging buah bersama air lemon, madu, dan air hingga halus.", "Tuang ke wadah, simpan di freezer.", "Setiap 1 jam, keluarkan dan aduk/kerok dengan garpu agar teksturnya menjadi sorbet (lakukan 3-4 kali).", "Sajikan beku."], image_url: "assets/PAHIT-10.jpg" }
-            ],
+    { 
+        id: 1, 
+        name: "Dark Chocolate Bitter Mousse", 
+        time: "3 Jam 20 Menit", 
+        ingredients: [
+            "Dark chocolate 85% — 150 g", 
+            "Mentega — 20 g", 
+            "Telur ayam — 3 butir (pisahkan kuning & putih)", 
+            "Gula halus — 1 sdm (opsional)", 
+            "Whipping cream cair — 100 ml", 
+            "Garam — sejumput", 
+            "Vanilla extract — ½ sdt"
+        ], 
+        steps: [
+            "Lelehkan dark chocolate dan mentega dengan teknik double boiler. Dinginkan sedikit.", 
+            "Kocok putih telur + garam hingga soft peak.", 
+            "Kocok whipping cream terpisah hingga mengembang.", 
+            "Aduk coklat leleh dengan kuning telur & vanilla.", 
+            "Masukkan whipping cream, aduk pelan.", 
+            "Lipat putih telur ke adonan sampai rata.", 
+            "Dinginkan minimal 3 jam."
+        ], 
+        image_url: "assets/PAHIT-1.jpg" 
+    },
+    { 
+        id: 2, 
+        name: "Tiramisu Kopi Pahit", 
+        time: "4 Jam 30 Menit", 
+        ingredients: [
+            "Ladyfinger — 1 pak", 
+            "Kopi espresso pekat tanpa gula — 200 ml", 
+            "Mascarpone — 250 g", 
+            "Whipping cream — 150 ml", 
+            "Kuning telur — 2 butir", 
+            "Dark cocoa powder (tanpa gula) — 3 sdm", 
+            "Rum essence — ½ sdt (opsional)"
+        ], 
+        steps: [
+            "Campur mascarpone + kuning telur hingga lembut.", 
+            "Tambahkan whipping cream, kocok sampai mengental.", 
+            "Celup cepat ladyfinger ke espresso, jangan terlalu lama.", 
+            "Susun layer biskuit & krim.", 
+            "Taburi bubuk cokelat pahit tebal.", 
+            "Dinginkan 4 jam."
+        ], 
+        image_url: "assets/PAHIT-2.jpg" 
+    },
+    { 
+        id: 3, 
+        name: "Dark Matcha Pudding", 
+        time: "60 Menit", 
+        ingredients: [
+            "Bubuk matcha grade tinggi — 2 sdm", 
+            "Susu cair — 400 ml", 
+            "Gula — 1 sdm", 
+            "Agar-agar bubuk bening — 1 sdt", 
+            "Garam — sejumput", 
+            "Topping: kacang merah (opsional)"
+        ], 
+        steps: [
+            "Campur matcha + sedikit air panas jadi pasta pekat.", 
+            "Rebus susu + gula + agar + garam.", 
+            "Masukkan pasta matcha, aduk rata.", 
+            "Masak hingga mendidih.", 
+            "Tuang ke cetakan dan dinginkan."
+        ], 
+        image_url: "assets/PAHIT-3.jpg" 
+    },
+    { 
+        id: 4, 
+        name: "Bitter Orange Peel Chocolate Bark", 
+        time: "90 Menit", 
+        ingredients: [
+            "Kulit jeruk segar — dari 3 buah", 
+            "Gula — 2 sdm", 
+            "Air — 100 ml", 
+            "Dark chocolate 90% — 200 g"
+        ], 
+        steps: [
+            "Rebus kulit jeruk 5 menit, tiriskan (hilangkan pahit berlebih tapi tetap strong).", 
+            "Masak air + gula jadi sirup, masukkan kulit jeruk hingga semi-kering (candied).", 
+            "Lelehkan dark chocolate.", 
+            "Campur kulit jeruk & coklat, ratakan di loyang.", 
+            "Dinginkan hingga mengeras, pecahkan."
+        ], 
+        image_url: "assets/PAHIT-4.jpg" 
+    },
+    { 
+        id: 5, 
+        name: "Espresso Bitter Jelly", 
+        time: "1 Jam 15 Menit", 
+        ingredients: [
+            "Kopi espresso pekat — 300 ml", 
+            "Agar-agar — 1 sdt", 
+            "Gula — 1 sdt saja (boleh skip)", 
+            "Vanilla — ½ sdt"
+        ], 
+        steps: [
+            "Panaskan kopi + agar + gula hingga larut.", 
+            "Tambahkan vanilla.", 
+            "Tuang ke cetakan kecil.", 
+            "Dinginkan 1 jam."
+        ], 
+        image_url: "assets/PAHIT-5.jpg" 
+    },
+    { 
+        id: 6, 
+        name: "Chocolate–Charcoal Ice Cream", 
+        time: "4 Jam", 
+        ingredients: [
+            "Dark cocoa powder — 4 sdm", 
+            "Activated charcoal — ¼ sdt", 
+            "Susu cair — 300 ml", 
+            "Whipping cream — 200 ml", 
+            "Gula — 2 sdm", 
+            "Vanilla — ½ sdt"
+        ], 
+        steps: [
+            "Campur susu + cocoa + charcoal + gula, panaskan.", 
+            "Dinginkan.", 
+            "Tambahkan whipping cream, aduk.", 
+            "Bekukan 3–4 jam sambil diaduk setiap 30 menit."
+        ], 
+        image_url: "assets/PAHIT-6.jpg" 
+    },
+    { 
+        id: 7, 
+        name: "Dark Burnt Caramel Flan", 
+        time: "60 Menit", 
+        ingredients: [
+            "Gula pasir — 5 sdm (untuk karamel)", 
+            "Air — 2 sdm", 
+            "Susu cair — 400 ml", 
+            "Telur — 3 butir", 
+            "Vanilla — ½ sdt", 
+            "Garam — sejumput"
+        ], 
+        steps: [
+            "Buat karamel: panaskan gula hingga hampir gosong (warna gelap → pahit).", 
+            "Tuang ke cetakan flan.", 
+            "Campur susu + telur + vanilla + garam.", 
+            "Saring dan tuang ke cetakan.", 
+            "Kukus/oven metode bain-marie 35–40 menit."
+        ], 
+        image_url: "assets/PAHIT-7.jpg" 
+    },
+    { 
+        id: 8, 
+        name: "Bitter Matcha Brownies", 
+        time: "40 Menit", 
+        ingredients: [
+            "Matcha — 3 sdm (pekat)", 
+            "Tepung terigu — 120 g", 
+            "Gula — 50 g", 
+            "Butter — 80 g", 
+            "Telur — 2 butir", 
+            "Baking powder — ½ sdt", 
+            "White chocolate chunks (opsional)"
+        ], 
+        steps: [
+            "Lelehkan butter.", 
+            "Aduk matcha + terigu + baking powder.", 
+            "Masukkan telur + gula + butter cair, aduk rata.", 
+            "Oven 170°C 18–20 menit."
+        ], 
+        image_url: "assets/PAHIT-8.jpg" 
+    },
+    { 
+        id: 9, 
+        name: "Dark Herbal Bitter Cookies", 
+        time: "35 Menit", 
+        ingredients: [
+            "Tepung — 150 g", 
+            "Dark cocoa — 2 sdm", 
+            "Butter — 80 g", 
+            "Gula — 3 sdm", 
+            "Telur — 1 butir", 
+            "Rosemary kering — 1 sdt", 
+            "Kayu manis bubuk — ½ sdt", 
+            "Garam — sejumput"
+        ], 
+        steps: [
+            "Kocok butter + gula.", 
+            "Tambahkan telur.", 
+            "Masukkan bahan kering, aduk hingga adonan padat.", 
+            "Bentuk bulat pipih.", 
+            "Panggang 170°C 12 menit."
+        ], 
+        image_url: "assets/PAHIT-9.jpg" 
+    },
+    { 
+        id: 10, 
+        name: "Grapefruit Bitter Sorbet", 
+        time: "4 Jam", 
+        ingredients: [
+            "Jus grapefruit segar — 400 ml", 
+            "Kulit grapefruit parut — ½ sdt", 
+            "Air — 100 ml", 
+            "Gula — 3 sdm", 
+            "Lemon juice — 1 sdm"
+        ], 
+        steps: [
+            "Campurkan jus grapefruit, gula, air, dan lemon.", 
+            "Aduk hingga gula larut.", 
+            "Bekukan sambil diaduk tiap 45 menit.", 
+            "Sorbet dengan rasa pahit-segar citrus siap disajikan."
+        ], 
+        image_url: "assets/PAHIT-10.jpg" 
+    }
+],
             'Asam': [
                 { id: 11, name: "Lemon Mousse Lembut", time: "40 Menit", ingredients: ["200ml Whip Cream", "150g Cream Cheese", "Air perasan 2 buah Lemon", "Parutan kulit Lemon"], steps: ["Kocok cream cheese hingga lembut.", "Masukkan air lemon dan parutan kulit, aduk rata.", "Di wadah lain, kocok whip cream hingga kaku.", "Campurkan keduanya dengan teknik aduk balik.", "Tuang ke gelas, dinginkan 2 jam."], image_url: "assets/ASEM-1.jpg" },
                 { id: 12, name: "Puding Yogurt Stroberi", time: "30 Menit", ingredients: ["500ml Yogurt Plain", "10 buah Stroberi segar", "1 bungkus Agar-agar merah", "400ml Air"], steps: ["Masak agar-agar dengan air hingga mendidih.", "Matikan api, biarkan uap panas hilang.", "Masukkan yogurt plain, aduk cepat hingga rata.", "Tuang ke cetakan, beri potongan stroberi di dalamnya.", "Dinginkan hingga set."], image_url: "assets/ASEM-2.jpg" },
