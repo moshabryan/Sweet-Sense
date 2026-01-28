@@ -1017,17 +1017,266 @@
                 { id: 30, name: "Savory Sweet Puff", time: "40 Menit", ingredients: ["Lembaran Puff Pastry instan", "100g Keju Parmesan Bubuk", "1 Kuning Telur"], steps: ["Potong puff pastry memanjang (sticks).", "Olesi dengan kuning telur.", "Taburi keju parmesan yang banyak di seluruh permukaan.", "Panggang 200°C selama 15-20 menit hingga mengembang dan kecokelatan.", "Camilan gurih renyah."], image_url: "assets/ASIN-10.jpg" }
             ],
             'Gurih': [
-                { id: 31, name: "Savory Corn Milk Pudding", time: "40 Menit", ingredients: ["2 bonggol Jagung Manis", "600ml Santan Cair", "1 bungkus Agar-agar", "Gula & Garam"], steps: ["Pipil jagung, blender dengan sebagian santan, lalu saring.", "Campur sari jagung, sisa santan, agar-agar, gula, dan sedikit garam.", "Masak hingga mendidih dan mengental.", "Tuang ke cetakan, biarkan dingin.", "Rasanya manis gurih khas jagung."], image_url: "assets/GURIH-1.jpg" },
-                { id: 32, name: "Cheese Panna Cotta", time: "35 Menit", ingredients: ["250ml Cream", "250ml Susu", "50g Keju Edam Parut", "Gelatin"], steps: ["Panaskan susu dan cream.", "Masukkan keju edam parut, aduk hingga larut (jangan sampai mendidih besar).", "Masukkan gelatin yang sudah dimekarkan.", "Saring agar tekstur halus.", "Tuang ke gelas dan dinginkan."], image_url: "assets/GURIH-2.jpg" },
-                { id: 33, name: "Lupis Sticky Rice Savory", time: "60 Menit", ingredients: ["500g Beras Ketan (rendam 2 jam)", "Daun Pisang", "Kelapa Parut + Garam", "Saus Gula Merah"], steps: ["Bungkus ketan dengan daun pisang membentuk segitiga.", "Rebus dalam air mendidih selama 1-2 jam hingga matang padat.", "Gulingkan di kelapa parut yang sudah dikukus dengan garam.", "Sajikan dengan siraman saus gula merah kental.", "Gurih kelapa bertemu manis gula."], image_url: "assets/GURIH-3.jpg" },
-                { id: 34, name: "Savory Cheese Bread Pudding", time: "50 Menit", ingredients: ["5 lembar Roti Tawar (potong dadu)", "300ml Susu Cair", "2 Telur", "Keju Cheddar & Kismis"], steps: ["Tata potongan roti di loyang.", "Campur susu, telur, dan sedikit gula, aduk rata.", "Siramkan ke atas roti, biarkan meresap 10 menit.", "Taburi keju parut dan kismis.", "Panggang 170°C selama 30 menit."], image_url: "assets/GURIH-4.jpg" },
-                { id: 35, name: "Coconut Mochi Bites", time: "45 Menit", ingredients: ["200g Tepung Ketan", "250ml Santan Kental", "Gula Pasir", "Tepung Maizena Sangrai (taburan)"], steps: ["Campur tepung ketan, gula, dan santan. Aduk rata hingga licin.", "Kukus adonan selama 20-30 menit hingga matang transparan.", "Angkat, letakkan di alas yang sudah ditaburi maizena sangrai.", "Bentuk bulat-bulat selagi hangat.", "Teksturnya kenyal dan sangat gurih santan."], image_url: "assets/GURIH-5.jpg" },
-                { id: 36, name: "Mini Cheese Tarts", time: "55 Menit", ingredients: ["Kulit Tart", "200g Cream Cheese", "50g Mascarpone", "1 Telur", "Susu"], steps: ["Kocok cream cheese, mascarpone, dan gula hingga lembut.", "Tambahkan telur dan sedikit susu, aduk rata.", "Tuang ke dalam kulit tart (shell).", "Olesi permukaan dengan kuning telur.", "Panggang hingga isian set dan permukaan keemasan."], image_url: "assets/GURIH-6.jpg" },
-                { id: 37, name: "Savory Potato Custard Cake", time: "50 Menit", ingredients: ["200g Kentang Kukus (haluskan)", "3 Telur", "100ml Santan/Susu", "Gula Merah"], steps: ["Campur kentang halus, telur, santan, dan irisan gula merah.", "Blender hingga halus jika perlu.", "Tuang ke loyang yang dialasi daun pisang (opsional).", "Kukus hingga matang padat.", "Potong-potong setelah dingin."], image_url: "assets/GURIH-7.jpg" },
-                { id: 38, name: "Sea Salt Crème Brûlée", time: "50 Menit", ingredients: ["4 Kuning Telur", "300ml Heavy Cream", "Garam Laut", "Gula Pasir (topping)"], steps: ["Kocok kuning telur dan sedikit gula.", "Panaskan cream (jangan mendidih), tuang perlahan ke telur sambil diaduk.", "Beri garam laut secukupnya.", "Tuang ke ramekin, panggang teknik water bath (bain-marie) 150°C selama 40 menit.", "Beri gula di atasnya, bakar dengan torch."], image_url: "assets/GURIH-8.jpg" },
-                { id: 39, name: "Coconut Milk Custard", time: "35 Menit", ingredients: ["200ml Santan Kental", "3 Telur Ayam", "100g Gula Pasir", "Daun Pandan"], steps: ["Kocok telur dan gula hingga larut.", "Masukkan santan kental dan perasan daun pandan.", "Saring ke dalam mangkuk tahan panas.", "Kukus dengan api sedang selama 20-30 menit.", "Sajikan dengan ketan atau roti."], image_url: "assets/GURIH-9.jpg" },
-                { id: 40, name: "Silky Coconut Tofu Pudding", time: "30 Menit", ingredients: ["1 liter Susu Kedelai Manis", "1 sdt Agar-agar bubuk", "1/2 sdt Jelly bubuk"], steps: ["Campur semua bahan di panci.", "Masak dengan api sedang sambil diaduk hingga mendidih.", "Matikan api, aduk sebentar hingga uap berkurang.", "Saring ke dalam wadah/jar.", "Dinginkan. Teksturnya sangat lembut seperti kembang tahu."], image_url: "assets/GURIH-10.jpg" }
-            ],
+    { 
+        id: 31, 
+        name: "Savory Corn Milk Pudding (Puding Jagung Santan)", 
+        time: "40 Menit", 
+        ingredients: [
+            "2 bonggol Jagung Manis segar (atau 300g jagung pipilan)",
+            "600ml Santan Cair (dari ½ butir kelapa)",
+            "1 bungkus Agar-agar Plain (7g)",
+            "80g Gula Pasir",
+            "½ sdt Garam Halus",
+            "2 lembar Daun Pandan (ikat simpul)",
+            "100ml Air"
+        ], 
+        steps: [
+            "Pipil jagung, pisahkan ⅓ bagian untuk hiasan. Blender ⅔ bagian jagung dengan 200ml santan hingga halus.",
+            "Saring blenderan jagung, peras hingga mendapatkan sari jagung murni. Buang ampasnya.",
+            "Dalam panci, campur sari jagung, sisa santan, agar-agar, gula, garam, dan daun pandan.",
+            "Panaskan dengan api sedang sambil terus diaduk agar santan tidak pecah. Setelah mendidih, kecilkan api, masak 2-3 menit hingga agar-agar benar-benar larut.",
+            "Tuang ke dalam cetakan puding yang sudah dibasahi air. Biarkan uap panas hilang, lalu masukkan kulkas minimal 2 jam hingga set.",
+            "Untuk penyajian: potong-potong puding, sajikan dingin dengan taburan jagung pipil rebus di atasnya."
+        ], 
+        image_url: "assets/GURIH-1.jpg",
+        note: "Tekstur lembut dengan aroma jagung dan santan yang gurih. Cocok untuk camilan sehat."
+    },
+    { 
+        id: 32, 
+        name: "Cheese Panna Cotta (Panna Cotta Keju)", 
+        time: "35 Menit + 4 Jam pendinginan", 
+        ingredients: [
+            "250ml Heavy Cream (krim kental)",
+            "250ml Susu Full Cream",
+            "80g Keju Edam parut (bisa diganti Gouda atau Cheddar)",
+            "3 lembar Daun Gelatin (atau 2 sdt gelatin bubuk)",
+            "50g Gula Pasir",
+            "1 sdt Ekstrak Vanilla",
+            "Sejumput Garam",
+            "Madu atau selai buah untuk topping"
+        ], 
+        steps: [
+            "Rendam daun gelatin dalam air dingin 5 menit hingga lembut (jika pakai gelatin bubuk, campur dengan 2 sdm air).",
+            "Dalam panci kecil, panaskan susu dan heavy cream dengan api kecil (jangan sampai mendidih).",
+            "Tambahkan gula, garam, dan ekstrak vanilla. Aduk hingga gula larut.",
+            "Matikan api, masukkan keju parut. Aduk hingga keju meleleh sempurna.",
+            "Peras air dari gelatin yang sudah lembut, masukkan ke dalam campuran susu. Aduk hingga gelatin larut sempurna.",
+            "Saring adonan melalui saringan halus untuk mendapatkan tekstur yang lembut.",
+            "Tuang ke dalam gelas atau cetakan panna cotta. Dinginkan suhu ruang 30 menit, lalu simpan di kulkas minimal 4 jam.",
+            "Sajikan dingin dengan topping madu atau selai buah favorit."
+        ], 
+        image_url: "assets/GURIH-2.jpg",
+        note: "Panna cotta dengan sentuhan gurih keju yang elegan."
+    },
+    { 
+        id: 33, 
+        name: "Lupis Ketan Gurih dengan Kelapa Parut", 
+        time: "60 Menit + 2 jam perendaman", 
+        ingredients: [
+            "500g Beras Ketan Putih",
+            "200g Kelapa Parut segar",
+            "1 sdt Garam",
+            "Daun Pisang secukupnya (untuk membungkus)",
+            "Tusuk gigi atau lidi",
+            "Untuk Saus Gula Merah:",
+            "200g Gula Merah, disisir",
+            "100ml Air",
+            "1 lembar Daun Pandan",
+            "Sejumput Garam"
+        ], 
+        steps: [
+            "Rendam beras ketan dalam air selama minimal 2 jam (semalaman lebih baik). Tiriskan.",
+            "Siapkan daun pisang: lap bersih, panaskan di atas api sebentar agar lebih lentur.",
+            "Ambil 2-3 sdm beras ketan, bungkus dengan daun pisang membentuk segitiga atau bulat lonjong. Ikat dengan lidi.",
+            "Rebus lupis dalam air mendidih selama 1½ - 2 jam hingga matang (tes dengan menusukkan tusuk gigi).",
+            "Sementara itu, kukus kelapa parut dengan garam selama 15 menit.",
+            "Untuk saus gula merah: rebus gula merah, air, daun pandan, dan garam hingga mengental seperti sirup. Saring jika perlu.",
+            "Setelah lupis matang, angkat dan dinginkan sebentar. Kupas daun pembungkus.",
+            "Gulingkan lupis di atas kelapa parut kukus hingga tertutup rata.",
+            "Sajikan dengan siraman saus gula merah kental di atasnya."
+        ], 
+        image_url: "assets/GURIH-3.jpg",
+        note: "Perpaduan gurih ketan dan kelapa dengan manisnya gula merah."
+    },
+    { 
+        id: 35, 
+        name: "Coconut Mochi Bites (Klepon Modern)", 
+        time: "45 Menit", 
+        ingredients: [
+            "200g Tepung Ketan",
+            "50g Tepung Beras",
+            "250ml Santan Kental",
+            "100g Gula Pasir",
+            "½ sdt Garam",
+            "100g Gula Jawa (untuk isian), potong dadu kecil",
+            "Tepung Maizena Sangrai (untuk taburan):",
+            "50g Tepung Maizena",
+            "2 sdm Air (untuk perekat)"
+        ], 
+        steps: [
+            "Sangrai tepung maizena dalam wajan teflon dengan api kecil selama 5-7 menit hingga matang. Dinginkan.",
+            "Campur tepung ketan, tepung beras, gula pasir, dan garam dalam mangkuk besar.",
+            "Panaskan santan hingga hangat (jangan mendidih). Tuang santan hangat sedikit demi sedikit ke campuran tepung sambil diuleni.",
+            "Uleni hingga adonan kalis dan tidak lengket di tangan. Jika terlalu lembek, tambahkan sedikit tepung ketan.",
+            "Ambil sedikit adonan (sekitar 20g), pipihkan, beri 1 potong gula jawa di tengah. Tutup rapat dan bulatkan.",
+            "Didihkan air dalam panci. Masukkan mochi dan rebus hingga mengapung (sekitar 5-7 menit).",
+            "Angkat mochi dengan sendok berlubang, tiriskan sebentar.",
+            "Gulingkan mochi di atas tepung maizena sangrai hingga terlapisi rata.",
+            "Sajikan hangat atau suhu ruang. Tekstur kenyal dengan isian gula Jawa yang lumer."
+        ], 
+        image_url: "assets/GURIH-5.jpg",
+        note: "Versi modern klepon dengan isian gula Jawa yang meleleh."
+    },
+    { 
+        id: 36, 
+        name: "Mini Cheese Tarts (Tart Keju Mini)", 
+        time: "55 Menit", 
+        ingredients: [
+            "Untuk Kulit Tart:",
+            "200g Tepung Terigu Protein Rendah",
+            "100g Mentega Dingin, potong dadu",
+            "50g Gula Halus",
+            "1 butir Kuning Telur",
+            "2 sdm Air Es",
+            "Untuk Isian Keju:",
+            "200g Cream Cheese, suhu ruang",
+            "50g Mascarpone Cheese",
+            "60g Gula Halus",
+            "1 butir Telur Utuh",
+            "1 butir Kuning Telur",
+            "100ml Heavy Cream",
+            "1 sdt Ekstrak Vanilla",
+            "1 sdm Tepung Maizena"
+        ], 
+        steps: [
+            "Kulit tart: campur tepung dan gula halus. Masukkan mentega dingin, aduk dengan garpu hingga bertekstur seperti pasir.",
+            "Tambahkan kuning telur dan air es sedikit demi sedikit. Uleni sebentar hingga bisa dipulung. Bungkus plastik, diamkan di kulkas 30 menit.",
+            "Gilas adonan setebal 3mm, cetak dengan cetakan tart. Tusuk-tusuk dasar tart dengan garpu. Panggang 180°C selama 10 menit.",
+            "Isian: kocok cream cheese, mascarpone, dan gula halus hingga lembut. Tambahkan telur dan kuning telur satu per satu.",
+            "Masukkan heavy cream, vanilla, dan tepung maizena. Aduk hingga rata dan halus.",
+            "Tuang isian ke kulit tart yang sudah dipanggang hingga ¾ penuh.",
+            "Panggang 160°C selama 20-25 menit hingga bagian tengah masih sedikit goyang (jelly-like).",
+            "Dinginkan di rak kawat, lalu simpan di kulkas minimal 2 jam sebelum disajikan."
+        ], 
+        image_url: "assets/GURIH-6.jpg",
+        note: "Tart keju dengan tekstur lembut di dalam dan renyah di luar."
+    },
+    { 
+        id: 37, 
+        name: "Savory Potato Custard Cake (Kue Custard Kentang)", 
+        time: "50 Menit", 
+        ingredients: [
+            "400g Kentang, kupas dan kukus hingga empuk",
+            "3 butir Telur Ayam",
+            "150ml Santan Kental",
+            "100g Gula Merah, sisir halus",
+            "50g Gula Pasir",
+            "½ sdt Garam",
+            "¼ sdt Kayu Manis Bubuk",
+            "2 lembar Daun Pandan",
+            "Daun Pisang secukupnya (untuk alas loyang)",
+            "Minyak untuk olesan"
+        ], 
+        steps: [
+            "Haluskan kentang kukus selagi masih hangat menggunakan garpu atau potato masher.",
+            "Kocok telur, gula merah, gula pasir, dan garam hingga gula larut. Tambahkan santan sambil terus diaduk.",
+            "Masukkan kentang halus, kayu manis bubuk, dan daun pandan yang disobek-sobek. Aduk rata.",
+            "Saring adonan melalui saringan kasar untuk mendapatkan tekstur yang halus.",
+            "Siapkan loyang persegi (20x20cm), alasi dengan daun pisang yang sudah dilayukan di atas api. Olesi dengan minyak tipis.",
+            "Tuang adonan ke dalam loyang. Kukus dengan api sedang selama 40-45 menit hingga matang (tes dengan tusuk gigi).",
+            "Angkat, dinginkan suhu ruang. Potong-potong sebelum disajikan.",
+            "Sajikan hangat atau dingin. Lebih nikmat dengan taburan kelapa parut kukus."
+        ], 
+        image_url: "assets/GURIH-7.jpg",
+        note: "Cake tradisional dengan cita rasa gurih manis yang unik."
+    },
+    { 
+        id: 38, 
+        name: "Sea Salt Crème Brûlée", 
+        time: "50 Menit + 4 jam pendinginan", 
+        ingredients: [
+            "4 butir Kuning Telur",
+            "300ml Heavy Cream",
+            "80g Gula Pasir",
+            "1 sdt Ekstrak Vanilla",
+            "½ sdt Garam Laut (sea salt)",
+            "Gula Pasir untuk topping (sekitar 1 sdt per ramekin)",
+            "Alat: blow torch untuk membakar gula"
+        ], 
+        steps: [
+            "Panaskan oven 150°C. Siapkan 4-6 ramekin (mangkuk tahan panas).",
+            "Dalam panci kecil, panaskan heavy cream dengan api kecil hingga hampir mendidih (muncul gelembung di pinggir). Matikan api.",
+            "Dalam mangkuk terpisah, kocok kuning telur, gula pasir, dan garam laut hingga pucat dan kental.",
+            "Tuang cream panas perlahan ke dalam adonan telur sambil terus diaduk (tempering). Tambahkan ekstrak vanilla.",
+            "Saring adonan melalui saringan halus ke dalam wadah lain untuk menghilangkan gelembung udara.",
+            "Tuang adonan ke dalam ramekin hingga hampir penuh.",
+            "Siapkan loyang tinggi, tata ramekin di dalamnya. Tuang air panas ke loyang hingga mencapai setengah tinggi ramekin (water bath).",
+            "Panggang 30-40 menit hingga bagian tengah masih sedikit goyang saat digoyangkan.",
+            "Angkat, dinginkan suhu ruang. Simpan di kulkas minimal 4 jam (lebih baik semalaman).",
+            "Sebelum disajikan: taburi permukaan dengan gula pasir tipis-tipis. Gunakan blow torch untuk membakar gula hingga menjadi karamel keras.",
+            "Taburi sedikit garam laut di atas karamel. Sajikan segera."
+        ], 
+        image_url: "assets/GURIH-8.jpg",
+        note: "Crème brûlée klasik dengan sentuhan garam laut yang mengurangi rasa manis."
+    },
+    { 
+        id: 39, 
+        name: "Coconut Milk Custard (Serabi Kuah Santan)", 
+        time: "35 Menit", 
+        ingredients: [
+            "Untuk Custard:",
+            "3 butir Telur Ayam",
+            "200ml Santan Kental",
+            "100g Gula Pasir",
+            "¼ sdt Garam",
+            "2 lembar Daun Pandan",
+            "Untuk Kuah Santan:",
+            "400ml Santan Cair",
+            "50g Gula Pasir",
+            "¼ sdt Garam",
+            "1 lembar Daun Pandan",
+            "1 sdm Tepung Maizena (larutkan dengan 2 sdm air)"
+        ], 
+        steps: [
+            "Custard: kocok telur, gula, dan garam hingga gula larut. Tambahkan santan kental sambil terus diaduk.",
+            "Saring adonan custard, tambahkan daun pandan. Tuang ke dalam mangkuk tahan panas atau loyang kecil.",
+            "Kukus custard dengan api sedang selama 25-30 menit hingga matang (permukaan tidak lengket).",
+            "Kuah santan: panaskan santan cair dengan gula, garam, dan daun pandan. Aduk perlahan.",
+            "Saat hampir mendidih, masukkan larutan maizena. Aduk cepat hingga mengental. Angkat.",
+            "Setelah custard matang, angkat dan dinginkan. Potong dadu atau sesuai selera.",
+            "Sajikan custard dengan siraman kuah santan hangat. Bisa ditambahkan es batu jika ingin versi dingin."
+        ], 
+        image_url: "assets/GURIH-9.jpg",
+        note: "Dessert tradisional Indonesia dengan cita rasa santan yang kaya."
+    },
+    { 
+        id: 40, 
+        name: "Silky Coconut Tofu Pudding (Kembang Tahu Santan)", 
+        time: "30 Menit + 2 jam pendinginan", 
+        ingredients: [
+            "1 liter Susu Kedelai Murni",
+            "250ml Santan Kental",
+            "150g Gula Pasir",
+            "1 sdt Agar-agar Bubuk",
+            "½ sdt Jelly Powder (agar tekstur lebih kenyal)",
+            "¼ sdt Garam",
+            "3 lembar Daun Pandan",
+            "Sirup Jahe untuk pelengkap (opsional)"
+        ], 
+        steps: [
+            "Campur semua bahan kering (agar-agar, jelly powder, gula, garam) dalam panci besar.",
+            "Tambahkan susu kedelai sedikit demi sedikit sambil diaduk agar tidak menggumpal.",
+            "Masukkan santan dan daun pandan. Aduk rata dengan whisk.",
+            "Panaskan dengan api sedang sambil terus diaduk. Setelah mendidih, kecilkan api, masak 2-3 menit.",
+            "Matikan api, biarkan uap panas berkurang selama 5 menit. Aduk perlahan untuk menghilangkan gelembung.",
+            "Tuang ke dalam wadah atau jar kaca melalui saringan halus. Biarkan dingin suhu ruang.",
+            "Setelah tidak panas, simpan di kulkas minimal 2 jam hingga set sempurna.",
+            "Sajikan dingin dalam mangkuk kecil. Bisa diberi topping sirup jahe atau gula cair."
+        ], 
+        image_url: "assets/GURIH-10.jpg",
+        note: "Puding lembut seperti sutra dengan aroma khas santan dan kedelai."
+    }
+],
             'Manis': [
                 { id: 41, name: "Puding Cokelat Susu", time: "25 Menit", ingredients: ["1 liter Susu Cokelat", "1 bungkus Agar-agar Cokelat", "100g Dark Chocolate (cincang)", "Gula sesuai selera"], steps: ["Campur agar-agar dan susu di panci.", "Masak hingga hangat, masukkan cincangan cokelat.", "Aduk terus hingga cokelat leleh dan mendidih.", "Tuang ke cetakan puding.", "Sajikan dengan vla vanilla."], image_url: "assets/MANIS-1.jpg" },
                 { id: 42, name: "Donat Kentang Lembut", time: "120 Menit", ingredients: ["250g Tepung Terigu", "100g Kentang Kukus Halus", "1 sdt Ragi Instan", "2 Kuning Telur", "Susu Dingin"], steps: ["Campur tepung, ragi, gula, kentang, dan telur.", "Tuang susu sedikit demi sedikit sambil diuleni hingga kalis.", "Masukkan mentega dan garam, uleni hingga kalis elastis.", "Diamkan 45 menit hingga mengembang. Bentuk cincin.", "Goreng api sedang, taburi gula halus."], image_url: "assets/MANIS-2.jpg" },
