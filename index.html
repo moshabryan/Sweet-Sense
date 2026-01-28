@@ -993,17 +993,207 @@
     }
 ],
             'Asam': [
-                { id: 11, name: "Lemon Mousse Lembut", time: "2 Jam 15 Menit", ingredients: ["200 ml whipped cream cair", "2 sdm gula halus", "1 buah lemon (air & parutan kulit)", "1 sdt gelatin bubuk", "2 sdm air hangat"], steps: ["Larutkan gelatin dengan air hangat, aduk sampai bening.", "Kocok whipped cream dan gula halus sampai mengembang lembut.", "Masukkan air lemon dan parutan kulit lemon, aduk perlahan.", "Tuang gelatin cair, aduk balik sampai rata.", "Masukkan ke cup dan dinginkan minimal 2 jam di kulkas."], image_url: "assets/ASEM-1.jpg" },
-                { id: 12, name: "Puding Yogurt Stroberi", time: "30 Menit", ingredients: ["1 bungkus agar-agar plain", "600 ml air", "100 ml yogurt stroberi", "3 sdm gula pasir", "5 buah stroberi (potong kecil)"], steps: ["Rebus air, agar-agar, dan gula hingga mendidih.", "Matikan api, tunggu uap panas berkurang.", "Masukkan yogurt, aduk cepat sampai rata.", "Tambahkan potongan stroberi.", "Tuang ke cetakan dan dinginkan."], image_url: "assets/ASEM-2.jpg" },
-                { id: 13, name: "Tart Lemon Mini", time: "30 Menit", ingredients: ["10 buah kulit tart mini siap pakai", "2 butir kuning telur", "80 ml air lemon", "100 ml susu cair", "3 sdm gula pasir", "1 sdt maizena"], steps: ["Campur semua bahan isian, aduk rata.", "Masak dengan api kecil sambil diaduk sampai mengental.", "Dinginkan sebentar.", "Tuang ke kulit tart.", "Simpan di kulkas sebelum disajikan."], image_url: "assets/ASEM-3.jpg" },
-                { id: 14, name: "Es Leci Asam Pedas Manis", time: "10 Menit", ingredients: ["1 kaleng leci (airnya disisihkan)", "1 buah jeruk nipis", "2 sdm sirup gula", "3 iris cabai rawit", "Es batu secukupnya"], steps: ["Masukkan leci dan airnya ke gelas.", "Tambahkan air jeruk nipis dan sirup gula.", "Masukkan irisan cabai rawit.", "Tambahkan es batu.", "Aduk dan sajikan dingin."], image_url: "assets/ASEM-4.jpg" },
-                { id: 15, name: "Sorbet Mangga Asam", time: "4 Jam", ingredients: ["2 buah mangga matang", "1 sdm air lemon", "3 sdm gula cair", "100 ml air"], steps: ["Blender mangga, air lemon, gula cair, dan air sampai halus.", "Tuang ke wadah datar.", "Bekukan 1 jam, lalu kerok dengan garpu.", "Bekukan kembali 2–3 jam.", "Sajikan dingin."], image_url: "assets/ASEM-5.jpg" },
-                { id: 16, name: "Panna Cotta Yogurt Lemon", time: "3 Jam 15 Menit", ingredients: ["200 ml susu cair", "100 ml yogurt plain", "2 sdm gula pasir", "1 sdt gelatin bubuk", "2 sdm air lemon"], steps: ["Larutkan gelatin dengan sedikit air hangat.", "Panaskan susu dan gula hingga hangat, jangan mendidih.", "Masukkan gelatin, aduk rata.", "Tambahkan yogurt dan air lemon.", "Tuang ke cetakan dan dinginkan 3 jam."], image_url: "assets/ASEM-6.jpg" },
-                { id: 17, name: "Pie Kiwi Asam-Manis", time: "30 Menit", ingredients: ["1 kulit pie siap pakai", "3 buah kiwi (iris)", "2 sdm gula pasir", "1 sdt air lemon", "1 sdt maizena + 50 ml air"], steps: ["Masak kiwi, gula, dan air lemon sampai layu.", "Masukkan larutan maizena, aduk hingga mengental.", "Dinginkan sebentar.", "Tuang ke kulit pie.", "Simpan di kulkas sebelum disajikan."], image_url: "assets/ASEM-7.jpg" },
-                { id: 18, name: "Jelly Markisa Mint", time: "25 Menit", ingredients: ["1 bungkus jelly plain", "600 ml air", "4 buah markisa", "2 sdm gula pasir", "Daun mint secukupnya"], steps: ["Rebus air, jelly, dan gula sampai mendidih.", "Masukkan air dan biji markisa.", "Aduk rata, matikan api.", "Tambahkan daun mint.", "Tuang ke cetakan dan dinginkan."], image_url: "assets/ASEM-8.jpg" },
-                { id: 19, name: "Cheesecake Lemon Tanpa Oven", time: "4 Jam 30 Menit", ingredients: ["150 gr biskuit Marie (haluskan)", "75 gr mentega cair", "200 gr cream cheese", "100 ml whipped cream", "2 sdm gula halus", "2 sdm air lemon"], steps: ["Campur biskuit dan mentega, tekan ke dasar loyang.", "Kocok cream cheese dan gula hingga lembut.", "Tambahkan whipped cream dan air lemon.", "Aduk rata, tuang ke loyang.", "Dinginkan minimal 4 jam."], image_url: "assets/ASEM-9.jpg" },
-                { id: 20, name: "Puding Jeli Lemon dan Jeruk", time: "35 Menit", ingredients: ["1 bungkus agar-agar lemon", "500 ml air", "2 sdm gula pasir", "1 buah jeruk (ambil dagingnya)"], steps: ["Rebus air, agar-agar, dan gula hingga mendidih.", "Masukkan potongan jeruk.", "Aduk perlahan.", "Tuang ke cetakan.", "Dinginkan sampai set."], image_url: "assets/ASEM-10.jpg" }
-            ],
+                    { 
+        id: 11, 
+        name: "Lemon Mousse Lembut", 
+        time: "2 Jam 15 Menit", 
+        ingredients: [
+            "Whipped cream cair — 200 ml", 
+            "Gula halus — 2 sdm", 
+            "Lemon (air & parut kulit) — 1 buah", 
+            "Gelatin bubuk — 1 sdt", 
+            "Air hangat — 2 sdm"
+        ], 
+        steps: [
+            "Larutkan gelatin dengan air hangat, aduk sampai bening.", 
+            "Kocok whipped cream dan gula halus sampai mengembang lembut.", 
+            "Masukkan air lemon dan parutan kulit lemon, aduk perlahan.", 
+            "Tuang gelatin cair, aduk balik sampai rata.", 
+            "Masukkan ke cup dan dinginkan minimal 2 jam di kulkas."
+        ], 
+        image_url: "assets/ASEM-1.jpg" 
+    },
+    { 
+        id: 12, 
+        name: "Puding Yogurt Stroberi", 
+        time: "30 Menit", 
+        ingredients: [
+            "Agar-agar plain — 1 bungkus", 
+            "Air — 600 ml", 
+            "Yogurt stroberi — 100 ml", 
+            "Gula pasir — 3 sdm", 
+            "Stroberi (potong kecil) — 5 buah"
+        ], 
+        steps: [
+            "Rebus air, agar-agar, dan gula hingga mendidih.", 
+            "Matikan api, tunggu uap panas berkurang.", 
+            "Masukkan yogurt, aduk cepat sampai rata.", 
+            "Tambahkan potongan stroberi.", 
+            "Tuang ke cetakan dan dinginkan."
+        ], 
+        image_url: "assets/ASEM-2.jpg" 
+    },
+    { 
+        id: 13, 
+        name: "Tart Lemon Mini", 
+        time: "30 Menit", 
+        ingredients: [
+            "Kulit tart mini siap pakai — 10 buah", 
+            "Kuning telur — 2 butir", 
+            "Air lemon — 80 ml", 
+            "Susu cair — 100 ml", 
+            "Gula pasir — 3 sdm", 
+            "Maizena — 1 sdt"
+        ], 
+        steps: [
+            "Campur semua bahan isian, aduk rata.", 
+            "Masak dengan api kecil sambil diaduk sampai mengental.", 
+            "Dinginkan sebentar.", 
+            "Tuang ke kulit tart.", 
+            "Simpan di kulkas sebelum disajikan."
+        ], 
+        image_url: "assets/ASEM-3.jpg" 
+    },
+    { 
+        id: 14, 
+        name: "Es Leci Asam Pedas Manis", 
+        time: "10 Menit", 
+        ingredients: [
+            "Leci kaleng (pisahkan air) — 1 kaleng", 
+            "Jeruk nipis — 1 buah", 
+            "Sirup gula — 2 sdm", 
+            "Cabai rawit — 3 iris", 
+            "Es batu — Secukupnya"
+        ], 
+        steps: [
+            "Masukkan leci dan airnya ke gelas.", 
+            "Tambahkan air jeruk nipis dan sirup gula.", 
+            "Masukkan irisan cabai rawit.", 
+            "Tambahkan es batu.", 
+            "Aduk dan sajikan dingin."
+        ], 
+        image_url: "assets/ASEM-4.jpg" 
+    },
+    { 
+        id: 15, 
+        name: "Sorbet Mangga Asam", 
+        time: "4 Jam", 
+        ingredients: [
+            "Mangga matang — 2 buah", 
+            "Air lemon — 1 sdm", 
+            "Gula cair — 3 sdm", 
+            "Air — 100 ml"
+        ], 
+        steps: [
+            "Blender mangga, air lemon, gula cair, dan air sampai halus.", 
+            "Tuang ke wadah datar.", 
+            "Bekukan 1 jam, lalu kerok dengan garpu.", 
+            "Bekukan kembali 2–3 jam.", 
+            "Sajikan dingin."
+        ], 
+        image_url: "assets/ASEM-5.jpg" 
+    },
+    { 
+        id: 16, 
+        name: "Panna Cotta Yogurt Lemon", 
+        time: "3 Jam 15 Menit", 
+        ingredients: [
+            "Susu cair — 200 ml", 
+            "Yogurt plain — 100 ml", 
+            "Gula pasir — 2 sdm", 
+            "Gelatin bubuk — 1 sdt", 
+            "Air lemon — 2 sdm"
+        ], 
+        steps: [
+            "Larutkan gelatin dengan sedikit air hangat.", 
+            "Panaskan susu dan gula hingga hangat, jangan mendidih.", 
+            "Masukkan gelatin, aduk rata.", 
+            "Tambahkan yogurt dan air lemon.", 
+            "Tuang ke cetakan dan dinginkan 3 jam."
+        ], 
+        image_url: "assets/ASEM-6.jpg" 
+    },
+    { 
+        id: 17, 
+        name: "Pie Kiwi Asam-Manis", 
+        time: "30 Menit", 
+        ingredients: [
+            "Kulit pie siap pakai — 1 buah", 
+            "Kiwi (iris) — 3 buah", 
+            "Gula pasir — 2 sdm", 
+            "Air lemon — 1 sdt", 
+            "Maizena (+ 50ml air) — 1 sdt"
+        ], 
+        steps: [
+            "Masak kiwi, gula, dan air lemon sampai layu.", 
+            "Masukkan larutan maizena, aduk hingga mengental.", 
+            "Dinginkan sebentar.", 
+            "Tuang ke kulit pie.", 
+            "Simpan di kulkas sebelum disajikan."
+        ], 
+        image_url: "assets/ASEM-7.jpg" 
+    },
+    { 
+        id: 18, 
+        name: "Jelly Markisa Mint", 
+        time: "25 Menit", 
+        ingredients: [
+            "Jelly plain — 1 bungkus", 
+            "Air — 600 ml", 
+            "Markisa — 4 buah", 
+            "Gula pasir — 2 sdm", 
+            "Daun mint — Secukupnya"
+        ], 
+        steps: [
+            "Rebus air, jelly, dan gula sampai mendidih.", 
+            "Masukkan air dan biji markisa.", 
+            "Aduk rata, matikan api.", 
+            "Tambahkan daun mint.", 
+            "Tuang ke cetakan dan dinginkan."
+        ], 
+        image_url: "assets/ASEM-8.jpg" 
+    },
+    { 
+        id: 19, 
+        name: "Cheesecake Lemon Tanpa Oven", 
+        time: "4 Jam 30 Menit", 
+        ingredients: [
+            "Biskuit Marie (haluskan) — 150 gr", 
+            "Mentega cair — 75 gr", 
+            "Cream cheese — 200 gr", 
+            "Whipped cream — 100 ml", 
+            "Gula halus — 2 sdm", 
+            "Air lemon — 2 sdm"
+        ], 
+        steps: [
+            "Campur biskuit dan mentega, tekan ke dasar loyang.", 
+            "Kocok cream cheese dan gula hingga lembut.", 
+            "Tambahkan whipped cream dan air lemon.", 
+            "Aduk rata, tuang ke loyang.", 
+            "Dinginkan minimal 4 jam."
+        ], 
+        image_url: "assets/ASEM-9.jpg" 
+    },
+    { 
+        id: 20, 
+        name: "Puding Jeli Lemon dan Jeruk", 
+        time: "35 Menit", 
+        ingredients: [
+            "Agar-agar lemon — 1 bungkus", 
+            "Air — 500 ml", 
+            "Gula pasir — 2 sdm", 
+            "Jeruk (ambil dagingnya) — 1 buah"
+        ], 
+        steps: [
+            "Rebus air, agar-agar, dan gula hingga mendidih.", 
+            "Masukkan potongan jeruk.", 
+            "Aduk perlahan.", 
+            "Tuang ke cetakan.", 
+            "Dinginkan sampai set."
+        ], 
+        image_url: "assets/ASEM-10.jpg" 
+    }
+ ],
             
             'Asin' : [
     {
