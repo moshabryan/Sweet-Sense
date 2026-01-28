@@ -1278,17 +1278,239 @@
     }
 ],
             'Manis': [
-                { id: 41, name: "Puding Cokelat Susu", time: "25 Menit", ingredients: ["1 liter Susu Cokelat", "1 bungkus Agar-agar Cokelat", "100g Dark Chocolate (cincang)", "Gula sesuai selera"], steps: ["Campur agar-agar dan susu di panci.", "Masak hingga hangat, masukkan cincangan cokelat.", "Aduk terus hingga cokelat leleh dan mendidih.", "Tuang ke cetakan puding.", "Sajikan dengan vla vanilla."], image_url: "assets/MANIS-1.jpg" },
-                { id: 42, name: "Donat Kentang Lembut", time: "120 Menit", ingredients: ["250g Tepung Terigu", "100g Kentang Kukus Halus", "1 sdt Ragi Instan", "2 Kuning Telur", "Susu Dingin"], steps: ["Campur tepung, ragi, gula, kentang, dan telur.", "Tuang susu sedikit demi sedikit sambil diuleni hingga kalis.", "Masukkan mentega dan garam, uleni hingga kalis elastis.", "Diamkan 45 menit hingga mengembang. Bentuk cincin.", "Goreng api sedang, taburi gula halus."], image_url: "assets/MANIS-2.jpg" },
-                { id: 43, name: "Creme Brulee Simple", time: "45 Menit", ingredients: ["400ml Heavy Cream", "4 Kuning Telur", "60g Gula Pasir", "Ekstrak Vanilla"], steps: ["Panaskan cream dan vanilla hingga hangat.", "Kocok kuning telur dan gula. Tuang cream hangat perlahan.", "Saring, tuang ke ramekin.", "Panggang water bath 150°C selama 30-40 menit.", "Dinginkan, beri taburan gula, torch hingga jadi karamel keras."], image_url: "assets/MANIS-3.jpg" },
-                { id: 44, name: "Es Krim Vanila 3 Bahan", time: "6 Jam", ingredients: ["300ml Whipping Cream", "150ml Susu Kental Manis", "1 sdm Pasta Vanilla"], steps: ["Pastikan cream sangat dingin. Mixer hingga kaku (stiff peak).", "Masukkan susu kental manis dan vanilla.", "Aduk balik perlahan (folding) agar udara tidak keluar.", "Tuang ke wadah, bekukan 6 jam.", "Tekstur lembut tanpa mesin es krim."], image_url: "assets/MANIS-4.jpg" },
-                { id: 45, name: "Panna Cotta Strawberry", time: "35 Menit", ingredients: ["250ml Susu", "250ml Cream", "Gula", "Gelatin", "Selai Stroberi"], steps: ["Masak susu, cream, dan gula hingga hangat.", "Masukkan gelatin yang sudah dimekarkan.", "Tuang ke gelas miring (untuk variasi) atau lurus.", "Dinginkan hingga set.", "Beri topping selai stroberi di atasnya."], image_url: "assets/MANIS-5.jpg" },
-                { id: 46, name: "Cookies Chocolate Chip Chewy", time: "35 Menit", ingredients: ["150g Butter", "100g Brown Sugar", "200g Tepung Terigu", "Choco Chips"], steps: ["Mixer butter dan gula hingga creamy.", "Masukkan telur, aduk rata. Masukkan tepung.", "Masukkan choco chips, aduk rata dengan spatula.", "Sendokkan ke loyang, beri jarak.", "Panggang 170°C selama 15 menit."], image_url: "assets/MANIS-6.jpg" },
-                { id: 47, name: "Cinnamon Rolls Cream Cheese", time: "150 Menit", ingredients: ["Adonan Roti (Tepung, Ragi, Susu)", "Isian: Brown Sugar + Kayu Manis Bubuk + Butter"], steps: ["Gilas adonan roti hingga pipih persegi panjang.", "Olesi butter, taburi campuran gula dan kayu manis.", "Gulung memanjang, potong-potong setebal 3cm.", "Susun di loyang, diamkan hingga mengembang.", "Panggang hingga kecokelatan, beri glaze gula."], image_url: "assets/MANIS-7.jpg" },
-                { id: 48, name: "Brownies Fudgy", time: "55 Menit", ingredients: ["150g Dark Chocolate", "50g Butter", "40ml Minyak", "2 Telur", "150g Gula Halus (penting untuk shiny crust)", "100g Tepung"], steps: ["Lelehkan cokelat, butter, dan minyak.", "Kocok telur dan gula halus hingga gula benar-benar larut.", "Campurkan lelehan cokelat ke adonan telur.", "Masukkan tepung, aduk rata (jangan overmix).", "Panggang 180°C (30 menit)."], image_url: "assets/MANIS-8.jpg" },
-                { id: 49, name: "Banoffee Pie Mudah", time: "60 Menit", ingredients: ["Remahan Biskuit + Mentega (Base)", "Karamel Dulce de Leche", "Pisang Ambon", "Whipped Cream"], steps: ["Padatkan remahan biskuit di dasar wadah.", "Tuang lapisan karamel/dulce de leche.", "Susun irisan pisang di atasnya.", "Tutup dengan whipped cream tebal.", "Taburi bubuk cokelat."], image_url: "assets/MANIS-9.jpg" },
-                { id: 50, name: "Cheesecake No-Bake", time: "5 Jam", ingredients: ["250g Cream Cheese", "200ml Whipping Cream", "Gula Halus", "Air Lemon", "Base Biskuit"], steps: ["Kocok cream cheese dan gula hingga lembut.", "Masukkan whipping cream cair, mixer hingga kental dan kaku.", "Beri sedikit air lemon.", "Tuang ke atas lapisan biskuit di loyang bongkar pasang.", "Bekukan di kulkas minimal 5 jam."], image_url: "assets/MANIS-10.jpg" }
-            ]
+    {
+        id: 41,
+        name: "Puding Cokelat Susu",
+        time: "25 Menit",
+        ingredients: [
+            "1 bungkus agar-agar bubuk cokelat (7 g)",
+            "700 ml susu cair full cream",
+            "100 g gula pasir",
+            "2 sdm cokelat bubuk (ayak)",
+            "50 g DCC (dark cooking chocolate) cincang",
+            "Sejumput garam"
+        ],
+        steps: [
+            "Campur agar-agar, gula, dan cokelat bubuk. Aduk rata.",
+            "Tuang susu, aduk hingga larut.",
+            "Masak di atas api sedang sambil diaduk.",
+            "Masukkan DCC dan garam.",
+            "Setelah hampir mendidih, matikan api.",
+            "Tuang ke cetakan, biarkan uap hilang, lalu dinginkan di kulkas 1–2 jam."
+        ],
+        image_url: "assets/MANIS-1.jpg"
+    },
+    {
+        id: 42,
+        name: "Donat Kentang Lembut",
+        time: "120 Menit",
+        ingredients: [
+            "250 g tepung terigu protein tinggi",
+            "100 g kentang kukus, haluskan",
+            "40 g gula pasir",
+            "1 butir telur",
+            "5 g ragi instan",
+            "40 ml susu cair hangat",
+            "30 g mentega",
+            "Sejumput garam"
+        ],
+        steps: [
+            "Campur tepung, gula, ragi, dan kentang.",
+            "Masukkan telur dan susu. Uleni hingga setengah kalis.",
+            "Tambahkan mentega + garam. Uleni hingga kalis elastis.",
+            "Istirahatkan 40 menit.",
+            "Kempiskan, bentuk donat, proofing 20 menit.",
+            "Goreng api kecil, balik sekali saja."
+        ],
+        image_url: "assets/MANIS-2.jpg"
+    },
+    {
+        id: 43,
+        name: "Creme Brulee Simple",
+        time: "45 Menit",
+        ingredients: [
+            "400 ml heavy cream",
+            "4 kuning telur",
+            "70 g gula pasir",
+            "1 sdt vanila",
+            "Gula pasir tambahan untuk lapisan karamel"
+        ],
+        steps: [
+            "Panaskan cream + vanila hingga hangat (tidak mendidih).",
+            "Kocok kuning telur + gula sampai larut.",
+            "Tuang cream hangat sedikit demi sedikit ke telur sambil diaduk.",
+            "Saring, tuang ke ramekin.",
+            "Panggang water bath 150°C selama 35–45 menit.",
+            "Dinginkan, taburi gula, lalu torch hingga karamel terbentuk."
+        ],
+        image_url: "assets/MANIS-3.jpg"
+    },
+    {
+        id: 44,
+        name: "Es Krim Vanila 3 Bahan",
+        time: "6 Jam",
+        ingredients: [
+            "400 ml whipping cream",
+            "200 ml susu kental manis",
+            "1 sdt esens vanila"
+        ],
+        steps: [
+            "Kocok whipping cream hingga soft peak.",
+            "Tambahkan SKM dan vanila, aduk balik sampai rata.",
+            "Masukkan wadah kedap, bekukan 6 jam."
+        ],
+        image_url: "assets/MANIS-4.jpg"
+    },
+    {
+        id: 45,
+        name: "Panna Cotta Strawberry",
+        time: "35 Menit",
+        ingredients: [
+            "Panna Cotta:",
+            "250 ml susu",
+            "250 ml cream",
+            "60 g gula",
+            "1 sdt vanila",
+            "1 sdt agar-agar / 5 g gelatin (larutkan)",
+            "Saus Strawberry:",
+            "200 g stroberi",
+            "2–3 sdm gula",
+            "1 sdt lemon"
+        ],
+        steps: [
+            "Masak susu, cream, gula, dan vanila hingga hangat.",
+            "Masukkan agar/gelatin, aduk hingga larut.",
+            "Tuang ke gelas, dinginkan.",
+            "Masak stroberi + gula + lemon hingga kental.",
+            "Siram ke atas panna cotta."
+        ],
+        image_url: "assets/MANIS-5.jpg"
+    },
+    {
+        id: 46,
+        name: "Cookies Chocolate Chip Chewy",
+        time: "35 Menit",
+        ingredients: [
+            "120 g mentega leleh",
+            "150 g gula palm / brown sugar",
+            "1 butir telur",
+            "1 sdt vanila",
+            "180 g tepung terigu",
+            "1/2 sdt baking soda",
+            "1/2 sdt garam",
+            "100 g choco chips"
+        ],
+        steps: [
+            "Campur mentega + brown sugar hingga larut.",
+            "Masukkan telur & vanila.",
+            "Tambahkan bahan kering, aduk.",
+            "Masukkan choco chips.",
+            "Bentuk bulat, dinginkan 20 menit.",
+            "Panggang 170°C 10–12 menit."
+        ],
+        image_url: "assets/MANIS-6.jpg"
+    },
+    {
+        id: 47,
+        name: "Cinnamon Rolls Cream Cheese Frosting",
+        time: "150 Menit",
+        ingredients: [
+            "Bahan Adonan:",
+            "250 g tepung protein sedang",
+            "40 g gula",
+            "1 butir telur",
+            "40 g mentega",
+            "5 g ragi",
+            "120 ml susu hangat",
+            "Bahan Isian:",
+            "3 sdm mentega",
+            "3 sdm brown sugar",
+            "1 sdt kayu manis bubuk",
+            "Frosting:",
+            "80 g cream cheese",
+            "40 g mentega",
+            "80 g gula halus",
+            "1 sdt vanila"
+        ],
+        steps: [
+            "Uleni semua bahan adonan hingga kalis. Proofing 45 menit.",
+            "Gilas, oles mentega, taburi gula + kayu manis.",
+            "Gulung, potong, susun di loyang.",
+            "Proofing 20 menit.",
+            "Panggang 180°C 20 menit.",
+            "Oles frosting ketika hangat."
+        ],
+        image_url: "assets/MANIS-7.jpg"
+    },
+    {
+        id: 48,
+        name: "Brownies Fudgy",
+        time: "55 Menit",
+        ingredients: [
+            "150 g dark chocolate",
+            "80 g mentega",
+            "120 g gula",
+            "2 butir telur",
+            "70 g tepung terigu",
+            "25 g cokelat bubuk",
+            "Sejumput garam"
+        ],
+        steps: [
+            "Lelehkan cokelat + mentega.",
+            "Kocok telur + gula hingga larut.",
+            "Campur dengan cokelat leleh.",
+            "Ayak tepung + cokelat bubuk + garam.",
+            "Aduk hingga tercampur.",
+            "Panggang 170°C 20–25 menit."
+        ],
+        image_url: "assets/MANIS-8.jpg"
+    },
+    {
+        id: 49,
+        name: "Banoffee Pie Mudah",
+        time: "60 Menit",
+        ingredients: [
+            "200 g biskuit regal, halus",
+            "80 g mentega, leleh",
+            "2 pisang ambon, iris",
+            "200 g karamel/dulce de leche",
+            "Whipped cream secukupnya",
+            "Cokelat serut"
+        ],
+        steps: [
+            "Campur biskuit + mentega, tekan ke loyang. Dinginkan.",
+            "Oles dulce de leche.",
+            "Susun pisang.",
+            "Tutup whipped cream.",
+            "Taburi cokelat."
+        ],
+        image_url: "assets/MANIS-9.jpg"
+    },
+    {
+        id: 50,
+        name: "Cheesecake No-Bake",
+        time: "5 Jam",
+        ingredients: [
+            "Base:",
+            "200 g biskuit Marie/Regal",
+            "80 g mentega leleh",
+            "Cream:",
+            "250 g cream cheese",
+            "200 ml whipping cream",
+            "80 g gula halus",
+            "1 sdt vanila",
+            "1 sdm lemon"
+        ],
+        steps: [
+            "Tekan base biskuit ke loyang.",
+            "Kocok cream cheese + gula.",
+            "Tambahkan whipping cream + vanila + lemon, kocok rata.",
+            "Tuang ke loyang, dinginkan 4–6 jam.",
+            "Bisa ditambah topping blueberry/strawberry sauce."
+        ],
+        image_url: "assets/MANIS-10.jpg"
+    }
+]
         };
 
         // --- APP LOGIC ---
